@@ -34,7 +34,6 @@ export default function CaseStudiesIndex() {
   return (
     <div className="min-h-screen bg-white font-sans text-foreground flex flex-col">
       <Navbar />
-
       <main className="flex-grow">
         {/* Hero Band */}
         <section className="bg-primary text-white py-20 md:py-28">
@@ -86,7 +85,7 @@ export default function CaseStudiesIndex() {
 
                       {/* Bottom: Divider + Stat */}
                       <div className="mt-auto pt-6 border-t border-gray-100">
-                        <span className="text-sm font-bold text-orange-500 tracking-wide uppercase">
+                        <span className="text-sm font-bold tracking-wide uppercase text-[#3a82d3]">
                           {study.stat}
                         </span>
                       </div>
@@ -99,7 +98,6 @@ export default function CaseStudiesIndex() {
           </div>
         </section>
       </main>
-
       <CTASection />
       <Footer />
     </div>
