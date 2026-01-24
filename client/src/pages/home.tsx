@@ -182,7 +182,7 @@ export default function Home() {
               { title: "Track & Report", desc: "View the full audit trail instantly, export reports, and maintain compliance effortlessly.", step: "04" }
             ].map((item, i) => (
               <div key={i} className="relative group">
-                <div className="text-6xl font-black text-white/5 absolute -top-4 -left-4 select-none group-hover:text-white/10 transition-colors">
+                <div className="text-6xl font-black text-white/20 absolute -top-4 -left-4 select-none group-hover:text-white/30 transition-colors">
                   {item.step}
                 </div>
                 <div className="relative space-y-4 pt-8 pl-4">
