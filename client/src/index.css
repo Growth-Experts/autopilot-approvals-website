@@ -45,7 +45,7 @@
   --color-chart-5: hsl(var(--chart-5));
 
   --font-sans: 'Montserrat', sans-serif;
-  --radius: 1rem; /* 16px */
+  --radius: 0px; /* Square corners */
 }
 
 /* LIGHT MODE */

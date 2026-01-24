@@ -38,7 +38,7 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex">
-          <Button asChild className="bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg px-6">
+          <Button asChild className="bg-primary hover:bg-primary/90 text-white font-semibold px-6">
             <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">
               Book a Demo
             </a>

@@ -31,10 +31,10 @@ export default function Home() {
               If your approvals live in inboxes, chats, and hallway conversations, visibility disappears and risk creeps in. Autopilot brings every decision into one visible, policy-driven workflow.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold rounded-lg px-8 h-12">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8 h-12">
                 <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">Get Started Free</a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 font-bold rounded-lg px-8 h-12">
+              <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 font-bold px-8 h-12">
                 <a href="#value">Learn More</a>
               </Button>
             </div>
@@ -116,7 +116,7 @@ export default function Home() {
                  Fewer emails. Faster decisions. Stronger compliance.
                </p>
 
-               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold rounded-lg px-8">
+               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8">
                   <a href="#how">See How It Works</a>
                </Button>
              </div>
@@ -227,7 +227,7 @@ export default function Home() {
                  <p className="text-lg text-muted-foreground">
                    Talksure replaced rigid ERP workflows with Autopilot’s flexible approval process, making procurement faster, cleaner, and far easier to manage.
                  </p>
-                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold rounded-lg px-8">
+                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8">
                    <Link href="/case-studies/talksure">Read Now</Link>
                  </Button>
                </div>
