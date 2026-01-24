@@ -50,7 +50,7 @@ export function FeatureGrid() {
       {FEATURES.map((feature, i) => (
         <Card key={i} className="border-none shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
           <CardContent className="p-6 space-y-4">
-            <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            <div className="h-12 w-12 rounded-none bg-primary/10 flex items-center justify-center text-primary">
               <feature.icon className="h-6 w-6" />
             </div>
             <h3 className="font-bold text-lg text-foreground">{feature.title}</h3>
