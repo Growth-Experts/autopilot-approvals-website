@@ -3,11 +3,10 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { Mail, Phone } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -22,6 +21,7 @@ const formSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
   lastName: z.string().min(2, "Last name is required"),
   email: z.string().email("Invalid email address"),
+  phone: z.string().min(10, "Phone number is required"),
   company: z.string().min(2, "Company name is required"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
@@ -34,6 +34,7 @@ export default function Contact() {
       firstName: "",
       lastName: "",
       email: "",
+      phone: "",
       company: "",
       message: "",
     },
@@ -52,17 +53,20 @@ export default function Contact() {
     <div className="min-h-screen bg-white font-sans text-foreground flex flex-col">
       <Navbar />
 
-      <main className="flex-grow py-20 md:py-32">
-        <div className="container mx-auto px-4 md:px-6 max-w-2xl">
-          <div className="text-center space-y-6 mb-12">
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Contact Us</h1>
-            <p className="text-lg text-muted-foreground">
-              Interested in a demo or have questions? Fill out the form below.
-            </p>
-          </div>
+      <main className="flex-grow">
+        <div className="grid lg:grid-cols-2 min-h-[calc(100vh-64px)]">
+          {/* Left Side: Form */}
+          <div className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 lg:py-0">
+            <div className="max-w-xl mx-auto w-full">
+              <div className="mb-12">
+                <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">
+                  Get in touch!
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Ready to streamline your onboarding? Fill out the form below and our team will be in touch shortly.
+                </p>
+              </div>
 
-          <Card className="border-none shadow-2xl bg-white">
-            <CardContent className="p-8 md:p-12">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -71,9 +75,9 @@ export default function Contact() {
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>First name</FormLabel>
+                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">First Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Jane" {...field} />
+                            <Input placeholder="Jane" {...field} className="bg-gray-50 border-gray-200 h-12" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -84,9 +88,38 @@ export default function Contact() {
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Last name</FormLabel>
+                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Last Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Doe" {...field} />
+                            <Input placeholder="Doe" {...field} className="bg-gray-50 border-gray-200 h-12" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Work Email</FormLabel>
+                          <FormControl>
+                            <Input placeholder="jane@company.com" {...field} className="bg-gray-50 border-gray-200 h-12" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Phone Number</FormLabel>
+                          <FormControl>
+                            <Input placeholder="+1 (555) 000-0000" {...field} className="bg-gray-50 border-gray-200 h-12" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -96,26 +129,12 @@ export default function Contact() {
 
                   <FormField
                     control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Work email</FormLabel>
-                        <FormControl>
-                          <Input placeholder="jane@company.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
                     name="company"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Company</FormLabel>
+                        <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Company Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Acme Inc." {...field} />
+                          <Input placeholder="Acme Inc." {...field} className="bg-gray-50 border-gray-200 h-12" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -127,11 +146,11 @@ export default function Contact() {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Message</FormLabel>
                         <FormControl>
                           <Textarea 
-                            placeholder="Tell us about your needs..." 
-                            className="min-h-[120px]"
+                            placeholder="Tell us about your onboarding challenges..." 
+                            className="min-h-[160px] bg-gray-50 border-gray-200 resize-none p-4"
                             {...field} 
                           />
                         </FormControl>
@@ -140,18 +159,53 @@ export default function Contact() {
                     )}
                   />
 
-                  <div className="pt-4">
-                    <Button type="submit" size="lg" className="w-full font-bold bg-primary hover:bg-primary/90 text-white">
-                      Send Message
-                    </Button>
-                    <p className="text-xs text-center text-muted-foreground mt-4">
-                      We typically respond within 1 business day.
-                    </p>
-                  </div>
+                  <Button type="submit" size="lg" className="w-full h-14 font-bold text-base uppercase tracking-wide bg-primary hover:bg-primary/90 text-white rounded-none">
+                    Send Message
+                  </Button>
                 </form>
               </Form>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
+
+          {/* Right Side: Contact Info & Geometric Background */}
+          <div className="bg-[#111111] relative overflow-hidden flex flex-col justify-center items-center text-white p-12 lg:p-24 min-h-[500px] lg:min-h-auto">
+            {/* Geometric Background Lines */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+              <svg className="w-full h-full" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="400" cy="400" r="300" fill="none" stroke="white" strokeWidth="2" />
+                <line x1="0" y1="0" x2="800" y2="800" stroke="white" strokeWidth="2" />
+                <line x1="800" y1="0" x2="0" y2="800" stroke="white" strokeWidth="2" />
+                <line x1="200" y1="0" x2="600" y2="800" stroke="white" strokeWidth="2" />
+                <line x1="600" y1="0" x2="200" y2="800" stroke="white" strokeWidth="2" />
+              </svg>
+            </div>
+
+            <div className="relative z-10 space-y-10 max-w-md w-full">
+              <div className="flex items-start gap-6">
+                <div className="h-12 w-12 rounded-full bg-primary flex items-center justify-center shrink-0">
+                  <Mail className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-1">Email Us</h3>
+                  <a href="mailto:hello@autopilot.com" className="text-xl md:text-2xl font-medium hover:text-primary transition-colors">
+                    hello@autopilot.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="h-12 w-12 rounded-full bg-primary flex items-center justify-center shrink-0">
+                  <Phone className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-1">Call Us</h3>
+                  <a href="tel:+15551234567" className="text-xl md:text-2xl font-medium hover:text-primary transition-colors">
+                    +1 (555) 123-4567
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
 
