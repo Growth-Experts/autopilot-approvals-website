@@ -47,11 +47,11 @@ export default function Home() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent blur-3xl rounded-full opacity-50 -z-10" />
               
               {/* Desktop: Image anchored to right edge of viewport */}
-              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[50vw]">
+              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[55vw] h-[120%]">
                  <img 
                    src="/approvals-app.png" 
                    alt="Autopilot Dashboard" 
-                   className="w-full h-auto object-contain object-left drop-shadow-2xl"
+                   className="w-full h-full object-contain object-right"
                  />
               </div>
 
