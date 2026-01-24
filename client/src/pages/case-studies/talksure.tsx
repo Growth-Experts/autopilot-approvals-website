@@ -50,7 +50,7 @@ export default function TalksureCaseStudy() {
                 </div>
 
                 {/* The Results Box */}
-                <div className="bg-blue-50/50 p-8 rounded-2xl border border-blue-100">
+                <div className="bg-blue-50/50 p-8 border border-blue-100">
                   <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                     <TrendingUp className="h-6 w-6 text-primary" />
                     The Results
@@ -125,22 +125,22 @@ export default function TalksureCaseStudy() {
                 <div>
                   <h2 className="text-3xl font-bold mb-6">Outcomes: Saving Time and Money</h2>
                   <div className="grid sm:grid-cols-2 gap-6 mb-8">
-                     <div className="p-6 bg-gray-50 rounded-xl">
+                     <div className="p-6 bg-gray-50">
                         <Users className="h-8 w-8 text-primary mb-3" />
                         <h3 className="font-bold mb-2">Easier for Employees</h3>
                         <p className="text-sm text-muted-foreground">Procurement became intuitive and easy to use.</p>
                      </div>
-                     <div className="p-6 bg-gray-50 rounded-xl">
+                     <div className="p-6 bg-gray-50">
                         <Smartphone className="h-8 w-8 text-primary mb-3" />
                         <h3 className="font-bold mb-2">Faster Approvals</h3>
                         <p className="text-sm text-muted-foreground">Approvals happen without chasing or delays.</p>
                      </div>
-                     <div className="p-6 bg-gray-50 rounded-xl">
+                     <div className="p-6 bg-gray-50">
                         <DollarSign className="h-8 w-8 text-primary mb-3" />
                         <h3 className="font-bold mb-2">Cost Avoidance</h3>
                         <p className="text-sm text-muted-foreground">The business avoided unnecessary ERP licence costs.</p>
                      </div>
-                     <div className="p-6 bg-gray-50 rounded-xl">
+                     <div className="p-6 bg-gray-50">
                         <TrendingUp className="h-8 w-8 text-primary mb-3" />
                         <h3 className="font-bold mb-2">Better Tracking</h3>
                         <p className="text-sm text-muted-foreground">Procurement activity became easier to track and manage.</p>
@@ -166,7 +166,7 @@ export default function TalksureCaseStudy() {
 
               {/* Sidebar */}
               <div className="space-y-8">
-                <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-lg sticky top-24">
+                <div className="bg-white p-6 border border-gray-100 shadow-lg sticky top-24">
                   <div className="h-12 mb-6">
                     <img src="/talksure.png" alt="Talksure Logo" className="h-full w-auto object-contain" />
                   </div>
