@@ -140,20 +140,24 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="text-3xl md:text-4xl font-bold">Works with the tools your team already uses</h2>
-              <ul className="space-y-6">
+              <ul className="space-y-8">
                 {[
                   { title: "In Microsoft Teams", desc: "Approve, comment, or reassign requests directly inside Teams." },
                   { title: "SharePoint & Document Management", desc: "Autopilot automatically stores documents and audit trails in your central repository." },
                   { title: "Finance Systems", desc: "Sync approvals with platforms like Xero and QuickBooks (with more integrations coming)." }
                 ].map((item, i) => (
-                  <li key={i} className="space-y-2">
-                    <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground pl-3.5 border-l-2 border-gray-100">
-                      {item.desc}
-                    </p>
+                  <li key={i} className="flex gap-4">
+                    <div className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm">
+                      {i + 1}
+                    </div>
+                    <div className="space-y-1">
+                      <h3 className="text-lg font-bold text-foreground">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {item.desc}
+                      </p>
+                    </div>
                   </li>
                 ))}
               </ul>
