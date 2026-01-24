@@ -17,7 +17,11 @@ export function CTASection() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm font-medium">
-          {["Free 30-day trial", "No payment info required", "Full feature access", "Dedicated onboarding support"].map((item, i) => (
+          {[
+            "Purpose-built for approvals, not workarounds",
+            "Quick setup with hands-on support",
+            "Clear audit trails and accountability"
+          ].map((item, i) => (
             <div key={i} className="flex items-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-blue-200" />
               <span>{item}</span>
