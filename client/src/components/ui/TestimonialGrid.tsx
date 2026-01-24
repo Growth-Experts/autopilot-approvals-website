@@ -3,19 +3,19 @@ import { Quote } from "lucide-react";
 
 const TESTIMONIALS = [
   {
-    quote: "Autopilot Approvals has transformed our internal processes. What used to take days now takes hours. The visibility and control are unmatched.",
-    name: "Jane Doe",
-    title: "Operations Manager, Tech Solutions Inc."
+    quote: "All the ‘noise’ is stripped out – Autopilot is clear and intuitive and has great visibility on different roles and workflow stages. There is no bloat; you see only what you need to.",
+    name: "Lynda Hunter",
+    title: "Pilotfish"
   },
   {
-    quote: "The ease of setting up workflows and the clarity it provides are game-changers. Our team is more efficient, and we can make quicker, more informed decisions.",
-    name: "John Smith",
-    title: "Product Lead, Innovate Corp."
+    quote: "We found significant time and cost savings by eliminating license fees, enhanced efficiency, centralized reporting, improved transparency, and ability to manage users without license limitations in Microsoft Teams.",
+    name: "Gavin de Jager",
+    title: "Talksure"
   },
   {
-    quote: "Finally, an approvals solution that truly understands B2B needs. The customizable features and robust reporting have saved us countless hours.",
-    name: "Emily White",
-    title: "Marketing Director, Global Brands Inc."
+    quote: "The support and documentation from Autopilot is amazing - they go above and beyond documenting what they have done, even in the backend. They are on par with Fortune 500 companies in support.",
+    name: "Brendan Antunez",
+    title: "Sr. IT Manager - CLARK+ELBING LLP"
   }
 ];
 
