@@ -241,10 +241,10 @@ export default function Home() {
 
              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                {/* Logo Card */}
-               <div className="bg-slate-900 p-12 md:p-16 flex flex-col items-center justify-center gap-8 min-h-[300px]">
-                 <img src="/talksure.png" alt="Talksure" className="w-48 h-auto object-contain brightness-0 invert" />
-                 <div className="w-12 h-px bg-white/20" />
-                 <img src="/logo.png" alt="Autopilot" className="w-40 h-auto object-contain brightness-0 invert" />
+               <div className="bg-gray-50 border border-gray-100 p-12 md:p-16 flex flex-col items-center justify-center gap-8 min-h-[300px]">
+                 <img src="/talksure.png" alt="Talksure" className="w-48 h-auto object-contain" />
+                 <div className="w-12 h-px bg-gray-200" />
+                 <img src="/logo.png" alt="Autopilot" className="w-40 h-auto object-contain" />
                </div>
 
                {/* Bullets */}
