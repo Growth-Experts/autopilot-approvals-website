@@ -137,7 +137,7 @@ export default function Home() {
                </p>
 
                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8">
-                  <a href="#how">See How It Works</a>
+                  <Link href="/book-demo">Book a Demo</Link>
                </Button>
              </div>
              <div>
