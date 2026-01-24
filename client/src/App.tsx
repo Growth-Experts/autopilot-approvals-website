@@ -11,6 +11,8 @@ import TalksureCaseStudy from "@/pages/case-studies/talksure";
 import LawdCaseStudy from "@/pages/case-studies/lawd";
 import SaCanegrowersCaseStudy from "@/pages/case-studies/sa-canegrowers";
 
+import ScrollToTop from "@/components/layout/ScrollToTop";
+
 function Router() {
   return (
     <Switch>
@@ -29,6 +31,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <ScrollToTop />
         <Toaster />
         <Router />
       </TooltipProvider>
