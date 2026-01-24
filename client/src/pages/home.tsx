@@ -10,6 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { Check, PlayCircle } from "lucide-react";
 import { Link } from "wouter";
 
+import Approvals_integration from "@assets/Approvals integration.png";
+
 const BOOK_DEMO_URL = "https://example.com/book-demo";
 
 export default function Home() {
@@ -163,7 +165,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="flex justify-center">
-              <img src="/integrations.png" alt="Autopilot Integrations with Teams, Xero, SharePoint and more" className="w-full max-w-md object-contain" />
+              <img src={Approvals_integration} alt="Autopilot Integrations with Teams, Xero, SharePoint and more" className="w-full max-w-md object-contain" />
             </div>
           </div>
         </div>
