@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import { ArrowLeft, Check, TrendingUp, Users, DollarSign, Smartphone } from "lucide-react";
 import { FramedImagePlaceholder } from "@/components/ui/FramedImagePlaceholder";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function TalksureCaseStudy() {
   return (
