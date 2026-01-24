@@ -225,35 +225,49 @@ export default function Home() {
       {/* Case Study Callout */}
       <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-           <div className="bg-blue-50/50 rounded-3xl p-8 md:p-12 lg:p-16 border border-blue-100">
-             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-               <div className="space-y-8">
-                 <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                   Talksure: Approvals for 1,200+ employees now inside Microsoft Teams
-                 </h2>
-                 <ul className="space-y-3">
-                   {[
-                     "Reduced ERP licence costs for managers",
-                     "Faster approvals without needing to log into finance systems",
-                     "Significant time savings on manual rework",
-                     "Mobile-friendly approvals used across the organization"
-                   ].map((item, i) => (
-                     <li key={i} className="flex items-start gap-3">
-                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                       <span className="font-medium text-foreground/80">{item}</span>
-                     </li>
-                   ))}
-                 </ul>
-                 <p className="text-lg text-muted-foreground">
-                   Talksure replaced rigid ERP workflows with Autopilot’s flexible approval process, making procurement faster, cleaner, and far easier to manage.
-                 </p>
-                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8">
-                   <Link href="/case-studies/talksure">Read Now</Link>
-                 </Button>
+           <div className="max-w-5xl mx-auto">
+             {/* Header */}
+             <div className="text-center space-y-6 mb-16">
+               <Badge className="bg-orange-500 hover:bg-orange-600 text-white rounded-none px-4 py-1.5 text-sm font-bold uppercase tracking-wider">
+                 Case Study
+               </Badge>
+               <h2 className="text-3xl md:text-5xl font-black text-foreground tracking-tight leading-tight max-w-4xl mx-auto">
+                 Talksure: Approvals for 1,200+ employees now inside Microsoft Teams
+               </h2>
+               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                 Talksure replaced rigid ERP workflows with Autopilot’s flexible approval process, making procurement faster, cleaner, and far easier to manage.
+               </p>
+             </div>
+
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+               {/* Logo Card */}
+               <div className="bg-slate-900 p-12 md:p-16 flex flex-col items-center justify-center gap-8 min-h-[300px]">
+                 <img src="/talksure.png" alt="Talksure" className="w-48 h-auto object-contain brightness-0 invert" />
+                 <div className="w-12 h-px bg-white/20" />
+                 <img src="/logo.png" alt="Autopilot" className="w-40 h-auto object-contain brightness-0 invert" />
                </div>
-               <div>
-                 <FramedImagePlaceholder className="w-full shadow-lg bg-white" label="Talksure Case Study" />
-               </div>
+
+               {/* Bullets */}
+               <ul className="space-y-6">
+                 {[
+                   "Reduced ERP licence costs for managers",
+                   "Faster approvals without needing to log into finance systems",
+                   "Significant time savings on manual rework",
+                   "Mobile-friendly approvals used across the organization"
+                 ].map((item, i) => (
+                   <li key={i} className="flex items-start gap-4">
+                     <div className="h-2 w-2 rounded-full bg-orange-500 mt-2.5 shrink-0" />
+                     <span className="text-lg font-medium text-foreground">{item}</span>
+                   </li>
+                 ))}
+               </ul>
+             </div>
+
+             {/* Button */}
+             <div className="mt-16 text-center">
+               <Button asChild size="lg" variant="outline" className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-white font-bold px-10 h-14 text-base rounded-none uppercase tracking-wide">
+                 <Link href="/case-studies/talksure">Read Full Story</Link>
+               </Button>
              </div>
            </div>
         </div>
