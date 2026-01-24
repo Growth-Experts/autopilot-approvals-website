@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans text-foreground">
       <Navbar />
-
       {/* Hero Section */}
       <section className="pt-16 pb-20 md:pt-24 md:pb-32 container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -32,7 +31,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8 h-12">
-                <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">Get Started Free</a>
+                <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">Book a Demo</a>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 font-bold px-8 h-12">
                 <a href="#value">Learn More</a>
@@ -46,9 +45,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <LogoStrip />
-
       {/* Problem Section */}
       <section className="py-20 md:py-32 bg-gray-50/50">
         <div className="container mx-auto px-4 md:px-6">
@@ -83,7 +80,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Value Section */}
       <section id="value" className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 md:px-6">
@@ -126,7 +122,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Features Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 space-y-16">
@@ -139,7 +134,6 @@ export default function Home() {
           <FeatureGrid />
         </div>
       </section>
-
       {/* Integrations Section */}
       <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 md:px-6">
@@ -170,7 +164,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* How It Works */}
       <section id="how" className="py-20 md:py-32 bg-gray-900 text-white">
         <div className="container mx-auto px-4 md:px-6 space-y-16">
@@ -201,7 +194,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Case Study Callout */}
       <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 md:px-6">
@@ -238,7 +230,6 @@ export default function Home() {
            </div>
         </div>
       </section>
-
       {/* Results Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 space-y-16">
@@ -256,7 +247,6 @@ export default function Home() {
           <TestimonialGrid />
         </div>
       </section>
-
       <CTASection />
       <Footer />
     </div>
