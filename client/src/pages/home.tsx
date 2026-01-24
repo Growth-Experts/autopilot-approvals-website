@@ -11,6 +11,7 @@ import { Check, PlayCircle } from "lucide-react";
 import { Link } from "wouter";
 
 import MessyInbox from "@/assets/messy-inbox.png";
+import Approvals_integration from "@assets/Approvals integration.png";
 
 const BOOK_DEMO_URL = "https://example.com/book-demo";
 
