@@ -20,31 +20,50 @@ export default function Home() {
     <div className="min-h-screen bg-white font-sans text-foreground">
       <Navbar />
       {/* Hero Section */}
-      <section className="pt-16 pb-20 md:pt-24 md:pb-32 container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="space-y-8">
-            <Badge variant="secondary" className="px-4 py-1.5 rounded-full text-primary bg-primary/10 hover:bg-primary/20 font-medium">
-              Powered by Autopilot
-            </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-foreground">
-              When approvals vanish, <span className="text-primary block mt-2">accountability</span> goes with them
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-              If your approvals live in inboxes, chats, and hallway conversations, visibility disappears and risk creeps in. Autopilot brings every decision into one visible, policy-driven workflow.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8 h-12">
-                <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">Book a Demo</a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 font-bold px-8 h-12">
-                <a href="#value">Learn More</a>
-              </Button>
+      <section className="pt-16 pb-20 md:pt-24 md:pb-32 overflow-x-hidden">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="space-y-8">
+              <Badge variant="secondary" className="px-4 py-1.5 rounded-full text-primary bg-primary/10 hover:bg-primary/20 font-medium">
+                Powered by Autopilot
+              </Badge>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-foreground">
+                When approvals vanish, <span className="text-primary block mt-2">accountability</span> goes with them
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+                If your approvals live in inboxes, chats, and hallway conversations, visibility disappears and risk creeps in. Autopilot brings every decision into one visible, policy-driven workflow.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8 h-12">
+                  <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">Book a Demo</a>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 font-bold px-8 h-12">
+                  <a href="#value">Learn More</a>
+                </Button>
+              </div>
             </div>
-          </div>
-          <div className="relative">
-             {/* Decorative blob behind */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent blur-3xl rounded-full opacity-50 -z-10" />
-            <FramedImagePlaceholder className="w-full shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500" label="Autopilot Dashboard" />
+            <div className="relative lg:static">
+               {/* Decorative blob behind */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent blur-3xl rounded-full opacity-50 -z-10" />
+              
+              {/* Desktop: Image anchored to right edge of viewport */}
+              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[50vw]">
+                 <img 
+                   src="/approvals-app.png" 
+                   alt="Autopilot Dashboard" 
+                   className="w-full h-auto object-contain object-left drop-shadow-2xl"
+                 />
+              </div>
+
+              {/* Mobile: Standard stacking */}
+              <div className="lg:hidden w-full translate-x-[10%]">
+                <img 
+                  src="/approvals-app.png" 
+                  alt="Autopilot Dashboard" 
+                  className="w-full h-auto object-contain drop-shadow-2xl"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
