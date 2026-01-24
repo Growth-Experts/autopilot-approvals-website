@@ -29,20 +29,15 @@ export default function CaseStudiesIndex() {
       <Navbar />
       <main className="flex-grow">
         {/* Hero Band */}
-        <section className="bg-primary text-white py-20 md:py-28">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-                  Better Approvals. Stronger Operations.
-                </h1>
-                <p className="text-lg md:text-xl text-blue-100 leading-relaxed max-w-xl">
-                  Explore how organizations use Autopilot to replace email chaos with structured, visible approval workflows that move faster and stay audit-ready.
-                </p>
-              </div>
-              <div>
-                <FramedImagePlaceholder className="w-full bg-white/10 border-white/20 shadow-none" label="Case Studies Hero" />
-              </div>
+        <section className="bg-primary text-white py-24 md:py-32">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <div className="max-w-4xl mx-auto space-y-8">
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+                Better Approvals. <br className="hidden md:block" /> Stronger Operations.
+              </h1>
+              <p className="text-xl md:text-2xl text-blue-100 leading-relaxed max-w-2xl mx-auto font-medium">
+                Explore how organizations use Autopilot to replace email chaos with structured, visible approval workflows that move faster and stay audit-ready.
+              </p>
             </div>
           </div>
         </section>
