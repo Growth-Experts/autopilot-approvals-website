@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, PlayCircle } from "lucide-react";
 import { Link } from "wouter";
 
-import Approvals_integration from "@assets/Approvals integration.png";
+import MessyInbox from "@/assets/messy-inbox.png";
 
 const BOOK_DEMO_URL = "https://example.com/book-demo";
 
@@ -53,7 +53,7 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
              <div className="order-2 lg:order-1">
-                <FramedImagePlaceholder className="w-full" label="Email Chaos" />
+                <FramedImagePlaceholder className="w-full" label="Email Chaos" imageSrc={MessyInbox} />
              </div>
              <div className="order-1 lg:order-2 space-y-6">
                <h2 className="text-3xl md:text-4xl font-bold">The approval bottleneck is real</h2>
