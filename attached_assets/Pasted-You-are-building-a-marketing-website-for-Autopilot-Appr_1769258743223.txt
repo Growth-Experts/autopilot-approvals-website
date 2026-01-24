@@ -1,0 +1,261 @@
+You are building a marketing website for “Autopilot Approvals”, a product under the Autopilot brand.
+
+Goal
+- Create a clean, modern, conversion-focused marketing site.
+- Match the design language of the existing Autopilot Onboarding site (reference screenshot: /mnt/data/Autopilot Onboarding · 1.36pm · 01-24.jpeg).
+- Keep similar typography scale, spacing rhythm, and overall layout logic, but introduce subtle differences so Approvals feels like its own product.
+- Use the Autopilot Approvals logo at /mnt/data/Autopilot Logo_Approvals - Primary.png.
+
+Tech
+- Use Next.js (App Router) + TypeScript + Tailwind CSS.
+- Use shadcn/ui components where helpful (Button, Card, Badge, Input, Textarea).
+- Make it fully responsive (mobile, tablet, desktop).
+- Accessibility: semantic HTML, good contrast, focus states, aria labels.
+- No external image hotlinks. Use images from /public.
+
+Brand and styling
+- Primary color (Approvals blue): #3A82D3
+- Use neutral ink: #0B1220 (or similar) and soft gray text for secondary copy.
+- Background: white with very subtle off-white sections.
+- Rounded corners: 16px on cards, 999px on pill badges.
+- Shadows: soft, minimal.
+- Typography: use Montserrat as the site font (headings + body). Load via next/font/google.
+- Buttons: primary filled (blue), secondary outlined (blue border).
+- Subtle differences vs onboarding:
+  - Approvals uses blue as the accent instead of orange.
+  - More pill badges and slightly more card-based grouping.
+  - Hero keeps left copy + right visual, but spacing should feel slightly more airy.
+
+Routes
+Create these routes:
+1) / (Home)
+2) /case-studies (Case Studies index)
+3) /case-studies/talksure
+4) /case-studies/lawd
+5) /case-studies/syntech
+6) /case-studies/sa-canegrowers
+7) /contact (Contact page)
+
+Navigation
+- Top nav: left logo, center links (Home, Case Studies, Contact), right CTA button “Book a Demo”.
+- Sticky on scroll with subtle border-bottom.
+
+Link behavior
+- “Book a Demo” should link to a placeholder calendly booking page URL constant. Use: const BOOK_DEMO_URL = "https://example.com/book-demo"; (I will replace in Replit).
+- “Get Started Free” can link to BOOK_DEMO_URL for now.
+- “Learn More” scrolls to the section id="value".
+- “See How It Works” scrolls to the section id="how".
+- “Read Now” links to /case-studies/talksure.
+- All case study cards link to their respective /case-studies/... pages.
+- Use smooth scrolling.
+
+Assets
+- Client logos: I will add in Replit later. For now, implement a logo strip with placeholder boxes and text labels.
+- Product screenshots: use image blocks with neutral placeholders (framed browser window) that I will replace later.
+- Integrations image: use this file (copy into /public and reference it): /mnt/data/autopilot_integrations_1766071616309-BMdoNRtj.png
+
+HOME PAGE content (copy must match exactly)
+
+Hero section (two columns)
+- Pill badge: “Powered by Autopilot”
+- H1:
+  “When approvals vanish,
+  accountability
+  goes with them”
+- Paragraph:
+  “If your approvals live in inboxes, chats, and hallway conversations, visibility disappears and risk creeps in. Autopilot brings every decision into one visible, policy-driven workflow.”
+- Buttons:
+  Primary: “Get Started Free”
+  Secondary: “Learn More”
+- Right side: hero image placeholder (use a framed browser mock container)
+
+Trusted logos strip
+- Heading:
+  “Trusted by teams who value control, clarity, and compliance”
+- Show 8 logo placeholders in a neat responsive grid.
+- Use these labels until logos are provided:
+  3Way Marketing, SA Canegrowers, Capsicum, CBF, Turnkey, BRM, Ndogo, Tongaat Hulett
+
+Problem section (two columns)
+- Heading: “The approval bottleneck is real”
+- Paragraph:
+  “When requests sit in inboxes or get lost in side-conversations, teams slow down. What starts as a simple “Can you approve this?” quickly becomes:”
+- Bullets:
+  “Vanishing requests buried in email threads”
+  “No ownership when everyone is CC’d”
+  “Policy gaps and inconsistent decisions”
+  “Slow turnarounds and stressful audit trails”
+- Closing line:
+  “As your organization grows, so does the risk.”
+- Right side: image placeholder
+
+Value section (id="value", two columns, swapped layout vs prior section)
+- Heading: “Make every approval visible, auditable, and controlled”
+- Paragraph:
+  “Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework.”
+- Subheading line:
+  “With Autopilot Approvals, you can:”
+- Bullets:
+  “Automatically extract document details with AI-powered capture”
+  “Route requests by rules, roles, departments, or thresholds”
+  “Keep momentum with protected reassignment”
+  “Capture every decision in a timestamped audit trail”
+  “Approve from Web, Email, Microsoft Teams, or Mobile”
+- Emphasis line:
+  “Fewer emails. Faster decisions. Stronger compliance.”
+- Button: “See How It Works”
+- Left side: image placeholder
+
+Features section
+- Heading: “Key Features That Matter”
+- Supporting line:
+  “Autopilot Approvals turns complex approval chains into clear, compliant, and audit-ready workflows.”
+- 8 feature cards (icon circle + title + description):
+  1) Title: “AI-Powered Capture”
+     Body: “Upload a document and let Autopilot extract the details - reducing data entry errors and saving time.”
+  2) Title: “Policy-Based Routing”
+     Body: “Enforce your approval hierarchy consistently based on roles, departments, or financial thresholds.”
+  3) Title: “Protected Reassignment & Escalation”
+     Body: “Maintain SLAs while ensuring approvals only move to permitted peers or managers.”
+  4) Title: “Change Requests & Resubmits”
+     Body: “Correct issues without losing the original history or context.”
+  5) Title: “One-Click Reject/Cancel”
+     Body: “Capture mandatory reasons for a clean, audit-ready trail.”
+  6) Title: “Built-in Notes”
+     Body: “Keep conversations attached to the request - not lost in separate chats.”
+  7) Title: “Audit-Ready Visibility”
+     Body: “Every action is recorded, timestamped, and accessible for audits.”
+  8) Title: “Automatic Archiving”
+     Body: “File documents and audit trails directly into your DMS or finance systems.”
+
+Integrations section (two columns)
+- Heading: “Works with the tools your team already uses”
+- Bullets:
+  “In Microsoft Teams: Approve, comment, or reassign requests directly inside Teams.”
+  “SharePoint & Document Management: Autopilot automatically stores documents and audit trails in your central repository.”
+  “Finance Systems: Sync approvals with platforms like Xero and QuickBooks (with more integrations coming).”
+- Right side: render the provided integrations image from /public (the one I will add) with proper alt text.
+
+How it works section (id="how")
+- Heading: “How Autopilot Approvals Works”
+- Subheading:
+  “Effortlessly integrate and automate your approval workflows in four simple steps.”
+- 4 numbered steps:
+  1) Title: “Define Your Workflow”
+     Body: “Map roles, routing rules, thresholds, and escalation paths.”
+  2) Title: “Submit Requests”
+     Body: “Employees upload documents or complete request forms - with AI auto-filling key details.”
+  3) Title: “Automated Approvals”
+     Body: “Autopilot routes every request based on policy, sending reminders to keep things moving.”
+  4) Title: “Track & Report”
+     Body: “View the full audit trail instantly, export reports, and maintain compliance effortlessly.”
+
+Case study callout section (two columns)
+- Heading:
+  “Talksure: Approvals for 1,200+ employees
+  now inside Microsoft Teams”
+- Bullets:
+  “Reduced ERP licence costs for managers”
+  “Faster approvals without needing to log into finance systems”
+  “Significant time savings on manual rework”
+  “Mobile-friendly approvals used across the organization”
+- Paragraph:
+  “Talksure replaced rigid ERP workflows with Autopilot’s flexible approval process, making procurement faster, cleaner, and far easier to manage.”
+- Button: “Read Now” -> /case-studies/talksure
+- Left side: image placeholder
+
+Results section
+- Heading: “Results that speak for themselves”
+- Video placeholder embed area (framed container with play icon)
+- 3 testimonial cards with exact quotes and names:
+  1) Quote:
+     “Autopilot Approvals has transformed our internal processes. What used to take days now takes hours. The visibility and control are unmatched.”
+     Name: “Jane Doe”
+     Title: “Operations Manager, Tech Solutions Inc.”
+  2) Quote:
+     “The ease of setting up workflows and the clarity it provides are game-changers. Our team is more efficient, and we can make quicker, more informed decisions.”
+     Name: “John Smith”
+     Title: “Product Lead, Innovate Corp.”
+  3) Quote:
+     “Finally, an approvals solution that truly understands B2B needs. The customizable features and robust reporting have saved us countless hours.”
+     Name: “Emily White”
+     Title: “Marketing Director, Global Brands Inc.”
+
+Final CTA band (full width, primary blue background)
+- Heading: “Modern teams move faster with visibility and control”
+- Subheading:
+  “Replace email chaos, policy gaps, and slow approvals with one centralized, audit-ready workflow.”
+- 4 check items:
+  “Free 30-day trial”
+  “No payment info required”
+  “Full feature access”
+  “Dedicated onboarding support”
+- Button: “Book a Demo” -> BOOK_DEMO_URL
+
+Footer
+- Left:
+  “Replace inbox approvals with structured, policy-driven workflows.”
+  Subtle social icon placeholders (LinkedIn, X, GitHub).
+- Columns:
+  Product: Features, Integrations
+  Resources: Case Studies, Contact
+- Copyright:
+  “© 2025 Autopilot Approvals. All rights reserved.”
+
+CASE STUDIES INDEX PAGE (/case-studies) content (copy must match exactly)
+
+Hero band (blue background)
+- H1: “Better Approvals. Stronger Operations.”
+- Paragraph:
+  “Explore how organizations use Autopilot to replace email chaos with structured, visible approval workflows that move faster and stay audit-ready.”
+- Right side: image placeholder.
+- Below: Heading “Case Studies”
+
+Case study cards grid (2 columns desktop, 1 column mobile)
+Cards:
+1) Title: “Streamlining Procurement with Microsoft Teams”
+   Body: “How Talksure centralized purchase requests inside Teams, reduced ERP licence costs, and sped up approvals across 1,200 employees.”
+   Button: “Read More” -> /case-studies/talksure
+2) Title: “Cutting Onboarding Time by 40–50%”
+   Body: “See how LAWD automated recruitment and onboarding, improved accountability, and scaled processes during rapid growth.”
+   Button: “Read More” -> /case-studies/lawd
+3) Title: “Faster, Paperless Reseller Onboarding”
+   Body: “How Syntech replaced manual forms with a fully digital workflow, reducing onboarding from 10 days to 1 day.”
+   Button: “Read More” -> /case-studies/syntech
+4) Title: “Approvals Built Directly into Teams”
+   Body: “How SA Canegrowers digitized key approval processes and improved control by integrating Autopilot into their daily Microsoft 365 workflow.”
+   Button: “Read More” -> /case-studies/sa-canegrowers
+
+Reuse the same final CTA band and footer from Home.
+
+CASE STUDY DETAIL PAGES
+Create four pages with consistent layout:
+- Top hero: title + short intro + back link to /case-studies
+- Body sections: Challenge, Solution, Results, “What changed”, plus a CTA band at the end.
+
+Use this content for now (I will replace later), but keep the structure real:
+1) /case-studies/talksure
+   Title: “Talksure: Approvals inside Microsoft Teams”
+   Intro: 1–2 short paragraphs summarizing what’s on the home page callout.
+   Bullets: reuse the 4 bullets from the home page.
+2) /case-studies/lawd
+   Title: “LAWD: Slashing onboarding time by 40–50%”
+3) /case-studies/syntech
+   Title: “Syntech: Faster, paperless reseller onboarding”
+4) /case-studies/sa-canegrowers
+   Title: “SA Canegrowers: Approvals built into Teams”
+
+CONTACT PAGE (/contact)
+- Simple hero: “Contact”
+- Short paragraph inviting demo and questions.
+- Form fields: First name, Last name, Work email, Company, Message.
+- Primary submit button: “Send”
+- Add a note: “We typically respond within 1 business day.”
+- Submit can be a no-op for now (console.log) with validation.
+
+Implementation notes
+- Create shared components: Navbar, Footer, CTASection, LogoStrip, FeatureGrid, TestimonialGrid, FramedImagePlaceholder.
+- Keep spacing generous and consistent.
+- Ensure the design feels like the onboarding site’s sibling, not a clone.
+- Put placeholder images in /public/placeholders and reference them throughout.
+- Add section ids for scrolling: value, how.
