@@ -22,13 +22,6 @@ const CASE_STUDIES = [
     stat: "40-50% FASTER"
   },
   {
-    logo: "/syntech.png",
-    title: "Faster, Paperless Reseller Onboarding",
-    body: "How Syntech replaced manual forms with a fully digital workflow, reducing onboarding from 10 days to 1 day.",
-    link: "/case-studies/syntech",
-    stat: "10 DAYS TO 1 DAY"
-  },
-  {
     logo: "/sa-canegrowers.png",
     title: "Approvals Built Directly into Teams",
     body: "How SA Canegrowers digitized key approval processes and improved control by integrating Autopilot into their daily Microsoft 365 workflow.",
