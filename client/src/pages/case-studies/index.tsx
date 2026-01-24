@@ -15,13 +15,6 @@ const CASE_STUDIES = [
     stat: "FASTER APPROVALS"
   },
   {
-    logo: "/lawd.png",
-    title: "Cutting Onboarding Time by 40–50%",
-    body: "See how LAWD automated recruitment and onboarding, improved accountability, and scaled processes during rapid growth.",
-    link: "/case-studies/lawd",
-    stat: "40-50% FASTER"
-  },
-  {
     logo: "/sa-canegrowers.png",
     title: "Approvals Built Directly into Teams",
     body: "How SA Canegrowers digitized key approval processes and improved control by integrating Autopilot into their daily Microsoft 365 workflow.",
