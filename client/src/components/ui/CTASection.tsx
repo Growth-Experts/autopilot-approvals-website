@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
-
-const BOOK_DEMO_URL = "https://example.com/book-demo";
+import { Link } from "wouter";
 
 export function CTASection() {
   return (
@@ -31,9 +30,9 @@ export function CTASection() {
 
         <div className="pt-4">
           <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 font-bold px-8 h-14 text-base shadow-xl">
-            <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">
+            <Link href="/book-demo">
               Book a Demo
-            </a>
+            </Link>
           </Button>
         </div>
       </div>

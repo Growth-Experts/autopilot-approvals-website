@@ -35,7 +35,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8 h-12">
-                  <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">Book a Demo</a>
+                  <Link href="/book-demo">Book a Demo</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 font-bold px-8 h-12">
                   <a href="#value">Learn More</a>

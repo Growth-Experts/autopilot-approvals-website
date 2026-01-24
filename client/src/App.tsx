@@ -9,6 +9,7 @@ import Contact from "@/pages/contact";
 import CaseStudiesIndex from "@/pages/case-studies/index";
 import TalksureCaseStudy from "@/pages/case-studies/talksure";
 import SaCanegrowersCaseStudy from "@/pages/case-studies/sa-canegrowers";
+import BookDemo from "@/pages/book-demo";
 
 import ScrollToTop from "@/components/layout/ScrollToTop";
 
@@ -16,6 +17,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/book-demo" component={BookDemo} />
       <Route path="/contact" component={Contact} />
       <Route path="/case-studies" component={CaseStudiesIndex} />
       <Route path="/case-studies/talksure" component={TalksureCaseStudy} />

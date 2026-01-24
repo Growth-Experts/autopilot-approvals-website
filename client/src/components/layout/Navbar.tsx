@@ -39,9 +39,9 @@ export function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:flex">
           <Button asChild className="bg-primary hover:bg-primary/90 text-white font-semibold px-6">
-            <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">
+            <Link href="/book-demo">
               Book a Demo
-            </a>
+            </Link>
           </Button>
         </div>
 
@@ -58,9 +58,9 @@ export function Navbar() {
               <div className="flex flex-col gap-6 mt-8">
                 <NavItems />
                 <Button asChild className="bg-primary hover:bg-primary/90 text-white w-full">
-                  <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">
+                  <Link href="/book-demo">
                     Book a Demo
-                  </a>
+                  </Link>
                 </Button>
               </div>
             </SheetContent>
