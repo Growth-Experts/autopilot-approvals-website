@@ -1,10 +1,10 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CTASection } from "@/components/ui/CTASection";
-import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { ArrowLeft, Check } from "lucide-react";
+import { ArrowLeft, Check, TrendingUp, Users, DollarSign, Smartphone } from "lucide-react";
 import { FramedImagePlaceholder } from "@/components/ui/FramedImagePlaceholder";
+import { Badge } from "@/components/ui/badge";
 
 export default function TalksureCaseStudy() {
   return (
@@ -19,11 +19,15 @@ export default function TalksureCaseStudy() {
               <ArrowLeft className="h-4 w-4 mr-1" />
               Back to Case Studies
             </Link>
+            <div className="flex gap-2 mb-4">
+              <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5">Financial Services</Badge>
+              <Badge variant="outline" className="text-gray-600 border-gray-200">Procurement</Badge>
+            </div>
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-              Talksure: Approvals inside Microsoft Teams
+              Talksure: A Smarter Way to Manage Purchase Requests
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Talksure replaced rigid ERP workflows with Autopilot’s flexible approval process, making procurement faster, cleaner, and far easier to manage for their 1,200+ employees.
+              When Talksure passed the 1,200-employee mark, they needed a procurement process that could scale without slowing people down.
             </p>
           </div>
         </section>
@@ -33,58 +37,160 @@ export default function TalksureCaseStudy() {
           <div className="container mx-auto px-4 md:px-6 max-w-4xl">
             <div className="grid md:grid-cols-[2fr_1fr] gap-12">
               <div className="space-y-12">
+                
+                {/* Introduction */}
                 <div>
-                  <h2 className="text-2xl font-bold mb-4">The Challenge</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Prior to Autopilot, Talksure struggled with fragmented approval processes scattered across emails and rigid ERP systems. Managers found it difficult to track requests while on the move, leading to delays and compliance risks. The high cost of ERP licenses for every approver also strained the budget.
+                  <p className="text-lg leading-relaxed text-foreground/80 mb-6">
+                    As a fast-growing financial services business operating across South Africa and international markets, Talksure needed a way to manage purchase requests that could scale - without slowing people down or overloading finance.
+                  </p>
+                  <p className="text-lg leading-relaxed text-foreground/80">
+                    They turned to Autopilot, with Greenlight supporting the implementation, to redesign procurement in a way that worked for real people, not just systems.
                   </p>
                 </div>
 
-                <div>
-                  <h2 className="text-2xl font-bold mb-4">The Solution</h2>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    Autopilot provided a seamless integration with Microsoft Teams, the environment where employees already worked. By moving approvals out of the ERP and into a user-friendly interface, Talksure democratized access to the approval process.
-                  </p>
-                  <ul className="space-y-3 bg-blue-50/50 p-6 rounded-xl border border-blue-100">
+                {/* The Results Box */}
+                <div className="bg-blue-50/50 p-8 rounded-2xl border border-blue-100">
+                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                    <TrendingUp className="h-6 w-6 text-primary" />
+                    The Results
+                  </h2>
+                  <p className="mb-6 font-medium">Here’s what changed once Autopilot was introduced:</p>
+                  <ul className="space-y-4">
                     {[
-                      "Reduced ERP licence costs for managers",
-                      "Faster approvals without needing to log into finance systems",
-                      "Significant time savings on manual rework",
-                      "Mobile-friendly approvals used across the organization"
+                      "Purchase requests moved through the business faster",
+                      "Managers could approve requests directly from Teams or mobile",
+                      "Fewer errors from occasional users raising requests",
+                      "Less manual intervention and rework for finance",
+                      "Reduced ERP licensing costs for non-core users",
+                      "Better visibility and reporting across procurement"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                        <span className="font-medium text-foreground/80">{item}</span>
+                        <span className="text-foreground/90">{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
-
-                <div>
-                  <h2 className="text-2xl font-bold mb-4">The Results</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    The shift to Autopilot has been transformative. Approval times have dropped significantly, and the audit trail is now automatic and comprehensive. Managers can approve requests from their phones via Teams, ensuring business never stops waiting for a signature.
+                  <p className="mt-6 text-primary font-bold border-t border-blue-100 pt-4">
+                    Procurement stopped being a blocker and became a smooth, predictable process.
                   </p>
                 </div>
+
+                {/* Problem Section */}
+                <div>
+                  <h2 className="text-3xl font-bold mb-6">When Solutions Become Problems</h2>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Talksure had invested in a new ERP system, including its procurement module. On paper, it made sense. In practice, it created friction.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Occasional users struggled with a complex interface, leading to errors. Managers had to log into the ERP finance system just to approve requests, which introduced delays. Every requester and approver required a full ERP licence - an expensive solution for people who only needed to submit or approve the occasional purchase.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    When something went wrong, the workflow was rigid. Finance teams were forced to step in manually, rework requests, and keep things moving. The issue was usability.
+                  </p>
+                </div>
+
+                {/* Solution Section */}
+                <div>
+                  <h2 className="text-3xl font-bold mb-6">How Autopilot Solved It</h2>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    Autopilot’s role was to simplify the process without compromising governance. Rather than replacing the ERP, Autopilot became the front door to procurement - designed around how people already work.
+                  </p>
+                  
+                  <div className="space-y-6 pl-4 border-l-4 border-primary/20">
+                    <div className="space-y-2">
+                      <h3 className="font-bold text-lg text-foreground">Microsoft Teams Integration</h3>
+                      <p className="text-muted-foreground">Purchase requests are initiated through the Autopilot Workflow app inside Microsoft Teams.</p>
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="font-bold text-lg text-foreground">Mobile Approvals</h3>
+                      <p className="text-muted-foreground">Requests follow a clear approval flow, with managers approving directly in Teams or on mobile.</p>
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="font-bold text-lg text-foreground">Automated PO Creation</h3>
+                      <p className="text-muted-foreground">Once approved, Power Automate automatically creates the purchase order in the ERP.</p>
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="font-bold text-lg text-foreground">Instant Visibility</h3>
+                      <p className="text-muted-foreground">A PDF of the approved PO is generated and shared with the requester for visibility and record-keeping.</p>
+                    </div>
+                  </div>
+                  
+                  <p className="mt-8 text-lg font-medium text-foreground">
+                    The ERP remains the system of record. Autopilot removes the friction that sits around it.
+                  </p>
+                </div>
+
+                {/* Outcomes Section */}
+                <div>
+                  <h2 className="text-3xl font-bold mb-6">Outcomes: Saving Time and Money</h2>
+                  <div className="grid sm:grid-cols-2 gap-6 mb-8">
+                     <div className="p-6 bg-gray-50 rounded-xl">
+                        <Users className="h-8 w-8 text-primary mb-3" />
+                        <h3 className="font-bold mb-2">Easier for Employees</h3>
+                        <p className="text-sm text-muted-foreground">Procurement became intuitive and easy to use.</p>
+                     </div>
+                     <div className="p-6 bg-gray-50 rounded-xl">
+                        <Smartphone className="h-8 w-8 text-primary mb-3" />
+                        <h3 className="font-bold mb-2">Faster Approvals</h3>
+                        <p className="text-sm text-muted-foreground">Approvals happen without chasing or delays.</p>
+                     </div>
+                     <div className="p-6 bg-gray-50 rounded-xl">
+                        <DollarSign className="h-8 w-8 text-primary mb-3" />
+                        <h3 className="font-bold mb-2">Cost Avoidance</h3>
+                        <p className="text-sm text-muted-foreground">The business avoided unnecessary ERP licence costs.</p>
+                     </div>
+                     <div className="p-6 bg-gray-50 rounded-xl">
+                        <TrendingUp className="h-8 w-8 text-primary mb-3" />
+                        <h3 className="font-bold mb-2">Better Tracking</h3>
+                        <p className="text-sm text-muted-foreground">Procurement activity became easier to track and manage.</p>
+                     </div>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed italic border-l-4 border-gray-200 pl-4">
+                    "The process finally matched the pace of the business."
+                  </p>
+                </div>
+
+                {/* Conclusion */}
+                <div className="border-t border-gray-100 pt-8">
+                   <h2 className="text-2xl font-bold mb-4">What This Proves</h2>
+                   <p className="text-muted-foreground leading-relaxed mb-4">
+                     If your ERP is powerful but painful to use, the problem isn’t the system - it’s the experience around it. Autopilot helps you keep control while giving your people a workflow they actually want to use.
+                   </p>
+                   <p className="text-muted-foreground leading-relaxed font-medium">
+                     Let’s fix the friction, without ripping everything out.
+                   </p>
+                </div>
+
               </div>
 
+              {/* Sidebar */}
               <div className="space-y-8">
-                <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 sticky top-24">
-                  <h3 className="font-bold mb-4">At a Glance</h3>
+                <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-lg sticky top-24">
+                  <div className="h-12 mb-6">
+                    <img src="/talksure.png" alt="Talksure Logo" className="h-full w-auto object-contain" />
+                  </div>
+                  <h3 className="font-bold mb-4 border-b border-gray-100 pb-2">At a Glance</h3>
                   <div className="space-y-4 text-sm">
                     <div>
-                      <p className="text-muted-foreground">Industry</p>
+                      <p className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Industry</p>
                       <p className="font-medium">Financial Services</p>
                     </div>
                     <div>
-                      <p className="text-muted-foreground">Company Size</p>
-                      <p className="font-medium">1,200+ Employees</p>
+                      <p className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Challenge</p>
+                      <p className="font-medium">Slow ERP procurement process & high licensing costs</p>
                     </div>
                     <div>
-                      <p className="text-muted-foreground">Key Integration</p>
-                      <p className="font-medium">Microsoft Teams</p>
+                      <p className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Solution</p>
+                      <p className="font-medium">Autopilot + Microsoft Teams</p>
+                    </div>
+                    <div>
+                      <p className="text-muted-foreground text-xs uppercase tracking-wider font-semibold">Partner</p>
+                      <p className="font-medium">Greenlight</p>
                     </div>
                   </div>
+                  <Button className="w-full mt-6 bg-primary hover:bg-primary/90 text-white font-bold rounded-none">
+                    Download PDF
+                  </Button>
                 </div>
               </div>
             </div>

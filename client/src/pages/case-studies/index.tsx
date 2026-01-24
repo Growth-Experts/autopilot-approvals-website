@@ -9,8 +9,8 @@ import { FramedImagePlaceholder } from "@/components/ui/FramedImagePlaceholder";
 const CASE_STUDIES = [
   {
     logo: "/talksure.png",
-    title: "Streamlining Procurement with Microsoft Teams",
-    body: "How Talksure centralized purchase requests inside Teams, reduced ERP licence costs, and sped up approvals across 1,200 employees.",
+    title: "Talksure: A Smarter Way to Manage Purchase Requests",
+    body: "How Talksure passed the 1,200-employee mark and redesigned procurement to work for real people, reducing errors and saving on ERP licenses.",
     link: "/case-studies/talksure",
     stat: "FASTER APPROVALS"
   },
