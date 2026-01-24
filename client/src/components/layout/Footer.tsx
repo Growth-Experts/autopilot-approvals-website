@@ -1,5 +1,4 @@
 import { Link } from "wouter";
-import { Linkedin, Twitter, Github } from "lucide-react";
 
 export function Footer() {
   return (
@@ -12,20 +11,6 @@ export function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               Replace inbox approvals with structured, policy-driven workflows.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </a>
-            </div>
           </div>
 
           {/* Links Columns */}
@@ -65,7 +50,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-          <p>© 2025 Autopilot Approvals. All rights reserved.</p>
+          <p>© 2026 Autopilot Approvals. All rights reserved.</p>
         </div>
       </div>
     </footer>
