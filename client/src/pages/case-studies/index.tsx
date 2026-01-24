@@ -9,8 +9,8 @@ import { FramedImagePlaceholder } from "@/components/ui/FramedImagePlaceholder";
 const CASE_STUDIES = [
   {
     logo: "/talksure.png",
-    title: "Procurement that does not slow people down",
-    body: "When Talksure passed 1,200 employees, their procurement process became a bottleneck. Requests stalled. Approvals took too long. Finance spent time fixing mistakes instead of moving work forward. Autopilot changed that by turning a heavy ERP process into something simple and easy to use, without losing control or visibility.",
+    title: "A smarter way to manage purchase requests",
+    body: "As Talksure grew to over 1,200 employees, procurement became slower and harder to manage. Autopilot simplified the process, making it easier to raise requests, approve them quickly, and keep everything running smoothly.",
     link: "/case-studies/talksure",
     stat: "FASTER APPROVALS"
   },
