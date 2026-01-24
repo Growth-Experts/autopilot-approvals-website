@@ -25,7 +25,7 @@ export default function SaCanegrowersCaseStudy() {
         </section>
         <section className="py-20">
           <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-             <p className="text-muted-foreground italic">Full case study content coming soon.</p>
+             <p className="text-muted-foreground italic">(Do we have content for this Case Study? Or if not, do we have a different Approvals case study?)</p>
           </div>
         </section>
       </main>
