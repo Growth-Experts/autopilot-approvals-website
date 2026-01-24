@@ -27,7 +27,7 @@ export default function Home() {
               <Badge variant="secondary" className="px-4 py-1.5 rounded-full text-primary bg-primary/10 hover:bg-primary/20 font-medium">
                 Powered by Autopilot
               </Badge>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-foreground">
+              <h1 className="md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground text-[50px]">
                 When approvals vanish, <span className="text-primary block mt-2">accountability</span> goes with them
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
