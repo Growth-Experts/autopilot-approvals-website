@@ -27,9 +27,6 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left: Copy */}
             <div className="lg:col-span-5 space-y-8">
-              <Badge variant="secondary" className="px-4 py-1.5 rounded-full text-primary bg-primary/10 hover:bg-primary/20 font-medium">
-                Powered by Autopilot
-              </Badge>
               <h1 className="md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground text-[50px]">
                 When approvals vanish, <span className="text-primary block mt-2">accountability</span> goes with them
               </h1>
