@@ -264,7 +264,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* Logo Card */}
-              <div className="bg-white/5 border border-white/10 p-12 md:p-16 flex flex-col items-center justify-center gap-8 min-h-[300px] shadow-[0_18px_60px_rgba(0,0,0,0.35)]" data-testid="card-case-study-logos">
+              <div className="bg-white border border-white/20 p-12 md:p-16 flex flex-col items-center justify-center gap-8 min-h-[300px] shadow-[0_18px_60px_rgba(0,0,0,0.35)]" data-testid="card-case-study-logos">
                 <img src="/talksure.png" alt="Talksure" className="w-48 h-auto object-contain" />
                 <div className="w-12 h-px bg-white/15" />
                 <img src="/logo.png" alt="Autopilot" className="w-40 h-auto object-contain" />
