@@ -170,6 +170,15 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+
+              <div className="pt-2" data-testid="section-microsoft-partner">
+                <img
+                  src="/src/assets/microsoft-partner.png"
+                  alt="Microsoft Partner"
+                  className="h-10 w-auto opacity-90"
+                  data-testid="img-microsoft-partner"
+                />
+              </div>
             </div>
             <div className="flex justify-center">
               <img src={Approvals_integration} alt="Autopilot Integrations with Teams, Xero, SharePoint and more" className="w-full max-w-md object-contain" />
