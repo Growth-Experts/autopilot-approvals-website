@@ -64,9 +64,6 @@ export default function Home() {
       <section className="py-20 md:py-32 bg-gray-50/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-             <div className="order-2 lg:order-1">
-                <img src={messy_inbox} alt="Email Chaos" className="w-full h-auto rounded-lg shadow-xl" />
-             </div>
              <div className="order-1 lg:order-2 space-y-6">
                <h2 className="text-3xl md:text-4xl font-bold">The approval bottleneck is real</h2>
                <p className="text-lg text-muted-foreground">
