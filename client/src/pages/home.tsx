@@ -221,9 +221,9 @@ export default function Home() {
               { title: "Automated Approvals", desc: "Autopilot routes every request based on policy, sending reminders to keep things moving.", step: "03" },
               { title: "Track & Report", desc: "View the full audit trail instantly, export reports, and maintain compliance effortlessly.", step: "04" }
             ].map((item) => (
-              <div key={item.step} className="flex flex-col items-center text-center" data-testid={`card-how-step-${item.step}`}>
+              <div key={item.step} className="flex flex-col items-center text-center group" data-testid={`card-how-step-${item.step}`}>
                 <div
-                  className="h-14 w-14 border border-border flex items-center justify-center text-xs font-extrabold tracking-widest text-muted-foreground bg-white"
+                  className="h-14 w-14 border border-border flex items-center justify-center text-xs font-extrabold tracking-widest text-muted-foreground bg-white group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300"
                   data-testid={`badge-how-step-${item.step}`}
                 >
                   {item.step}
