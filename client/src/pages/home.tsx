@@ -240,53 +240,59 @@ export default function Home() {
         </div>
       </section>
       {/* Case Study Callout */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-           <div className="max-w-5xl mx-auto">
-             {/* Header */}
-             <div className="text-center space-y-6 mb-16">
-               <Badge className="bg-orange-500 hover:bg-orange-600 text-white rounded-none px-4 py-1.5 text-sm font-bold uppercase tracking-wider">
-                 Case Study
-               </Badge>
-               <h2 className="text-3xl md:text-5xl font-black text-foreground tracking-tight leading-tight max-w-4xl mx-auto">
-                 Talksure: Approvals for 1,200+ employees now inside Microsoft Teams
-               </h2>
-               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                 Talksure replaced rigid ERP workflows with Autopilot’s flexible approval process, making procurement faster, cleaner, and far easier to manage.
-               </p>
-             </div>
+      <section className="py-20 md:py-32 bg-[#0B1220] text-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute -top-48 -left-48 h-[520px] w-[520px] bg-primary/20 blur-3xl" />
+          <div className="absolute -bottom-56 -right-48 h-[560px] w-[560px] bg-primary/10 blur-3xl" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_55%)]" />
+        </div>
 
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-               {/* Logo Card */}
-               <div className="bg-gray-50 border border-gray-100 p-12 md:p-16 flex flex-col items-center justify-center gap-8 min-h-[300px]">
-                 <img src="/talksure.png" alt="Talksure" className="w-48 h-auto object-contain" />
-                 <div className="w-12 h-px bg-gray-200" />
-                 <img src="/logo.png" alt="Autopilot" className="w-40 h-auto object-contain" />
-               </div>
+        <div className="container mx-auto px-4 md:px-6 relative">
+          <div className="max-w-5xl mx-auto">
+            {/* Header */}
+            <div className="text-center space-y-6 mb-14">
+              <Badge className="bg-primary/15 text-primary border border-primary/30 rounded-none px-4 py-1.5 text-sm font-bold uppercase tracking-wider">
+                Case Study
+              </Badge>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight max-w-4xl mx-auto" data-testid="text-case-study-title">
+                Talksure: Approvals for 1,200+ employees now inside Microsoft Teams
+              </h2>
+              <p className="text-lg text-white/70 max-w-2xl mx-auto" data-testid="text-case-study-subtitle">
+                Talksure replaced rigid ERP workflows with Autopilot’s flexible approval process, making procurement faster, cleaner, and far easier to manage.
+              </p>
+            </div>
 
-               {/* Bullets */}
-               <ul className="space-y-6">
-                 {[
-                   "Reduced ERP licence costs for managers",
-                   "Faster approvals without needing to log into finance systems",
-                   "Significant time savings on manual rework",
-                   "Mobile-friendly approvals used across the organization"
-                 ].map((item, i) => (
-                   <li key={i} className="flex items-start gap-4">
-                     <div className="h-2 w-2 rounded-full bg-orange-500 mt-2.5 shrink-0" />
-                     <span className="text-lg font-medium text-foreground">{item}</span>
-                   </li>
-                 ))}
-               </ul>
-             </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* Logo Card */}
+              <div className="bg-white/5 border border-white/10 p-12 md:p-16 flex flex-col items-center justify-center gap-8 min-h-[300px] shadow-[0_18px_60px_rgba(0,0,0,0.35)]" data-testid="card-case-study-logos">
+                <img src="/talksure.png" alt="Talksure" className="w-48 h-auto object-contain" />
+                <div className="w-12 h-px bg-white/15" />
+                <img src="/logo.png" alt="Autopilot" className="w-40 h-auto object-contain" />
+              </div>
 
-             {/* Button */}
-             <div className="mt-16 text-center">
-               <Button asChild size="lg" variant="outline" className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-white font-bold px-10 h-14 text-base rounded-none uppercase tracking-wide">
-                 <Link href="/case-studies/talksure">Read Full Story</Link>
-               </Button>
-             </div>
-           </div>
+              {/* Bullets */}
+              <ul className="space-y-6" data-testid="list-case-study-bullets">
+                {[
+                  "Reduced ERP licence costs for managers",
+                  "Faster approvals without needing to log into finance systems",
+                  "Significant time savings on manual rework",
+                  "Mobile-friendly approvals used across the organization"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4" data-testid={`row-case-study-bullet-${i}`}>
+                    <div className="h-2 w-2 bg-primary mt-2.5 shrink-0" data-testid={`dot-case-study-bullet-${i}`} />
+                    <span className="text-lg font-medium text-white/90" data-testid={`text-case-study-bullet-${i}`}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Button */}
+            <div className="mt-16 text-center">
+              <Button asChild size="lg" variant="outline" className="border-2 border-white/70 text-white hover:bg-white hover:text-[#0B1220] font-bold px-10 h-14 text-base rounded-none uppercase tracking-wide" data-testid="button-case-study-read-story">
+                <Link href="/case-studies/talksure">Read Full Story</Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
       {/* Results Section */}
