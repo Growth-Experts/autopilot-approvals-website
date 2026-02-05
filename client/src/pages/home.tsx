@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/Footer";
 import { CTASection } from "@/components/ui/CTASection";
 import { LogoStrip } from "@/components/ui/LogoStrip";
 import { FeatureGrid } from "@/components/ui/FeatureGrid";
-import { FramedImagePlaceholder } from "@/components/ui/FramedImagePlaceholder";
 import { TestimonialGrid } from "@/components/ui/TestimonialGrid";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -126,9 +125,6 @@ export default function Home() {
                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8">
                   <Link href="/book-demo">Book a Demo</Link>
                </Button>
-             </div>
-             <div>
-                <FramedImagePlaceholder className="w-full shadow-xl" label="Structured Workflow" />
              </div>
           </div>
         </div>
