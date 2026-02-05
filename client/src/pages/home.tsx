@@ -59,73 +59,69 @@ export default function Home() {
         </div>
       </section>
       <LogoStrip />
-      {/* Problem Section */}
+      {/* Problem + Value */}
       <section className="py-20 md:py-32 bg-gray-50/50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-             <div className="order-1 lg:order-2 space-y-6">
-               <h2 className="text-3xl md:text-4xl font-bold">The approval bottleneck is real</h2>
-               <p className="text-lg text-muted-foreground">
-                 When requests sit in inboxes or get lost in side-conversations, teams slow down. What starts as a simple “Can you approve this?” quickly becomes:
-               </p>
-               <ul className="space-y-4">
-                 {[
-                   "Vanishing requests buried in email threads",
-                   "No ownership when everyone is CC’d",
-                   "Policy gaps and inconsistent decisions",
-                   "Slow turnarounds and stressful audit trails"
-                 ].map((item, i) => (
-                   <li key={i} className="flex items-start gap-3">
-                     <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
-                       <div className="h-2 w-2 bg-red-500 rounded-full" />
-                     </div>
-                     <span className="font-medium">{item}</span>
-                   </li>
-                 ))}
-               </ul>
-               <p className="text-lg font-semibold text-foreground pt-2">
-                 As your organization grows, so does the risk.
-               </p>
-             </div>
-          </div>
-        </div>
-      </section>
-      {/* Value Section */}
-      <section id="value" className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-             <div className="space-y-8">
-               <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible, auditable, and controlled</h2>
-               <p className="text-lg text-muted-foreground">
-                 Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework.
-               </p>
-               
-               <div>
-                 <p className="font-semibold text-foreground mb-4">With Autopilot Approvals, you can:</p>
-                 <ul className="space-y-3">
-                   {[
-                     "Automatically extract document details with AI-powered capture",
-                     "Route requests by rules, roles, departments, or thresholds",
-                     "Keep momentum with protected reassignment",
-                     "Capture every decision in a timestamped audit trail",
-                     "Approve from Web, Email, Microsoft Teams, or Mobile"
-                   ].map((item, i) => (
-                     <li key={i} className="flex items-start gap-3">
-                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                       <span className="text-muted-foreground">{item}</span>
-                     </li>
-                   ))}
-                 </ul>
-               </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left: Problem */}
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold">The approval bottleneck is real</h2>
+              <p className="text-lg text-muted-foreground">
+                When requests sit in inboxes or get lost in side-conversations, teams slow down. What starts as a simple “Can you approve this?” quickly becomes:
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Vanishing requests buried in email threads",
+                  "No ownership when everyone is CC’d",
+                  "Policy gaps and inconsistent decisions",
+                  "Slow turnarounds and stressful audit trails",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="h-2 w-2 bg-red-500 rounded-full" />
+                    </div>
+                    <span className="font-medium">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-lg font-semibold text-foreground pt-2">
+                As your organization grows, so does the risk.
+              </p>
+            </div>
 
-               <p className="text-xl font-bold text-primary">
-                 Fewer emails. Faster decisions. Stronger compliance.
-               </p>
+            {/* Right: Value (moved up) */}
+            <div id="value" className="space-y-8">
+              <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible, auditable, and controlled</h2>
+              <p className="text-lg text-muted-foreground">
+                Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework.
+              </p>
 
-               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8">
-                  <Link href="/book-demo">Book a Demo</Link>
-               </Button>
-             </div>
+              <div>
+                <p className="font-semibold text-foreground mb-4">With Autopilot Approvals, you can:</p>
+                <ul className="space-y-3">
+                  {[
+                    "Automatically extract document details with AI-powered capture",
+                    "Route requests by rules, roles, departments, or thresholds",
+                    "Keep momentum with protected reassignment",
+                    "Capture every decision in a timestamped audit trail",
+                    "Approve from Web, Email, Microsoft Teams, or Mobile",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="text-xl font-bold text-primary">
+                Fewer emails. Faster decisions. Stronger compliance.
+              </p>
+
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8">
+                <Link href="/book-demo">Book a Demo</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
