@@ -62,7 +62,7 @@ export default function Home() {
       {/* Problem + Value */}
       <section className="py-20 md:py-32 bg-gray-50/50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
             {/* Left: Problem */}
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold">The approval bottleneck is real</h2>
@@ -113,15 +113,21 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-
-              <p className="text-xl font-bold text-primary">
-                Fewer emails. Faster decisions. Stronger compliance.
-              </p>
-
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8">
-                <Link href="/book-demo">Book a Demo</Link>
-              </Button>
             </div>
+          </div>
+
+          <div className="mt-14 flex flex-col items-center text-center">
+            <p className="text-xl font-bold text-primary" data-testid="text-fewer-emails">
+              Fewer emails. Faster decisions. Stronger compliance.
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="mt-6 bg-primary hover:bg-primary/90 text-white font-bold px-10 h-12"
+              data-testid="button-book-demo-problem-value"
+            >
+              <Link href="/book-demo">Book a Demo</Link>
+            </Button>
           </div>
         </div>
       </section>
