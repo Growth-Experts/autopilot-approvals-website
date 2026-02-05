@@ -6,7 +6,7 @@ import { FeatureGrid } from "@/components/ui/FeatureGrid";
 import { TestimonialGrid } from "@/components/ui/TestimonialGrid";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check, PlayCircle } from "lucide-react";
+import { Check } from "lucide-react";
 import { Link } from "wouter";
 
 import MessyInbox from "@/assets/messy-inbox.png";
@@ -300,13 +300,6 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6 space-y-16">
           <div className="text-center max-w-3xl mx-auto">
              <h2 className="text-3xl md:text-4xl font-bold mb-12">Results that speak for themselves</h2>
-             
-             {/* Video Placeholder */}
-             <div className="relative aspect-video bg-gray-900 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center group cursor-pointer mb-20">
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
-                <PlayCircle className="h-20 w-20 text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 relative z-10" />
-                <span className="sr-only">Play Video</span>
-             </div>
           </div>
           
           <TestimonialGrid />
