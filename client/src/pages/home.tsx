@@ -135,6 +135,51 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Microsoft Partner Section */}
+      <section className="py-20 md:py-32 bg-white border-b border-gray-100">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              <Badge className="bg-blue-50 text-blue-700 border-blue-100 hover:bg-blue-100 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider gap-2">
+                <Check className="h-3 w-3" />
+                Strategic Partnership
+              </Badge>
+              
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-foreground">
+                  Your Trusted <span className="text-[#00A4EF]">Microsoft Partner</span>
+                </h2>
+                
+                <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                  <p>
+                    For over a decade, we've built solutions that live where you work. Our deep partnership ensures Autopilot evolves alongside Microsoft's latest innovations.
+                  </p>
+                  <p>
+                    We integrate directly into <strong className="text-foreground">Microsoft Teams</strong> and <strong className="text-foreground">Office 365</strong>, removing friction by bringing workflows to the tools your team uses every day.
+                  </p>
+                  <p>
+                    With <strong className="text-foreground">Microsoft CoPilot</strong>, we bring next-gen AI capabilities into your processes—automating decisions while keeping your data secure.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Card */}
+            <div className="relative flex justify-center lg:justify-end">
+              <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full transform translate-x-12 translate-y-12" />
+              <div className="relative bg-white p-12 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 w-full max-w-md flex items-center justify-center aspect-[4/3]">
+                <img 
+                  src="/src/assets/microsoft-partner.png" 
+                  alt="Microsoft Partner" 
+                  className="w-full h-auto object-contain max-w-[280px]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 space-y-16">
