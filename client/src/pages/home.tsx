@@ -170,7 +170,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full transform translate-x-12 translate-y-12" />
               <div className="relative bg-white p-12 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 w-full max-w-md flex items-center justify-center aspect-[4/3] hover:shadow-[0_30px_60px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300">
                 <img 
-                  src="/src/assets/microsoft-partner.png" 
+                  src="/src/assets/microsoft-partner-stacked.png" 
                   alt="Microsoft Partner" 
                   className="w-full h-auto object-contain max-w-[280px]"
                 />
