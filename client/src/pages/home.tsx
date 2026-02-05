@@ -90,7 +90,7 @@ export default function Home() {
             </div>
 
             {/* Right: Value (moved up) */}
-            <div id="value" className="space-y-8 text-center lg:text-left">
+            <div id="value" className="space-y-8">
               <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible, auditable, and controlled</h2>
               <p className="text-lg text-muted-foreground">
                 Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework.
@@ -114,11 +114,11 @@ export default function Home() {
                 </ul>
               </div>
 
-              <p className="text-xl font-bold text-primary text-center">
+              <p className="text-xl font-bold text-primary">
                 Fewer emails. Faster decisions. Stronger compliance.
               </p>
 
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8 mx-auto">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8">
                 <Link href="/book-demo">Book a Demo</Link>
               </Button>
             </div>
