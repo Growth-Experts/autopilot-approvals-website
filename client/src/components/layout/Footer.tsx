@@ -25,7 +25,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#integrations"
+                    href="/#integrations"
                     className="text-sm text-muted-foreground hover:text-primary"
                     data-testid="link-footer-integrations"
                   >
