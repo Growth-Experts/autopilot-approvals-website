@@ -24,8 +24,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-16 pb-20 md:pt-24 md:pb-32">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left: Copy */}
+            <div className="lg:col-span-5 space-y-8">
               <Badge variant="secondary" className="px-4 py-1.5 rounded-full text-primary bg-primary/10 hover:bg-primary/20 font-medium">
                 Powered by Autopilot
               </Badge>
@@ -44,26 +45,29 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative lg:static">
-               {/* Decorative blob behind */}
-              <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent blur-3xl rounded-full opacity-50 -z-10" />
-              
-              {/* Desktop: Image anchored to right edge of viewport */}
-              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[55vw] max-w-[700px] h-[120%]">
-                 <img 
-                   src="/approvals-app.png" 
-                   alt="Autopilot Dashboard" 
-                   className="w-full h-full object-contain object-right"
-                 />
-              </div>
 
-              {/* Mobile: Standard stacking */}
-              <div className="lg:hidden w-full translate-x-[10%]">
-                <img 
-                  src="/approvals-app.png" 
-                  alt="Autopilot Dashboard" 
-                  className="w-full h-auto object-contain drop-shadow-2xl"
-                />
+            {/* Right: Image, flush to viewport edge */}
+            <div className="lg:col-span-7">
+              <div className="relative lg:min-h-[520px]">
+                <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent blur-3xl rounded-full opacity-50 -z-10" />
+
+                {/* Desktop */}
+                <div className="hidden lg:block absolute right-[-48px] top-1/2 -translate-y-1/2 w-[55vw] max-w-[700px]">
+                  <img
+                    src="/approvals-app.png"
+                    alt="Autopilot Dashboard"
+                    className="w-full h-auto object-contain object-right"
+                  />
+                </div>
+
+                {/* Mobile */}
+                <div className="lg:hidden w-full">
+                  <img
+                    src="/approvals-app.png"
+                    alt="Autopilot Dashboard"
+                    className="w-full h-auto object-contain drop-shadow-2xl"
+                  />
+                </div>
               </div>
             </div>
           </div>
