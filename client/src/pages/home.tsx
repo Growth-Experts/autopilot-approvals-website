@@ -62,56 +62,60 @@ export default function Home() {
       {/* Problem + Value */}
       <section className="py-20 md:py-32 bg-gray-50/50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             {/* Left: Problem */}
-            <div className="bg-white border border-gray-100 p-10 md:p-12 space-y-6" data-testid="section-problem">
-              <h2 className="text-3xl md:text-4xl font-bold">The approval bottleneck is real</h2>
-              <p className="text-lg text-muted-foreground">
-                When requests sit in inboxes or get lost in side-conversations, teams slow down. What starts as a simple “Can you approve this?” quickly becomes:
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "Vanishing requests buried in email threads",
-                  "No ownership when everyone is CC’d",
-                  "Policy gaps and inconsistent decisions",
-                  "Slow turnarounds and stressful audit trails",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
-                      <div className="h-2 w-2 bg-red-500 rounded-full" />
-                    </div>
-                    <span className="font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-lg font-semibold text-foreground pt-2">
+            <div className="bg-white border border-gray-100 p-10 md:p-12 space-y-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow" data-testid="section-problem">
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold">The approval bottleneck is real</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  When requests sit in inboxes or get lost in side-conversations, teams slow down. What starts as a simple “Can you approve this?” quickly becomes:
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "Vanishing requests buried in email threads",
+                    "No ownership when everyone is CC’d",
+                    "Policy gaps and inconsistent decisions",
+                    "Slow turnarounds and stressful audit trails",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
+                        <div className="h-2 w-2 bg-red-500 rounded-full" />
+                      </div>
+                      <span className="font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <p className="text-lg font-semibold text-foreground pt-4 border-t border-gray-50">
                 As your organization grows, so does the risk.
               </p>
             </div>
 
             {/* Right: Value */}
-            <div id="value" className="bg-white border border-gray-100 p-10 md:p-12 space-y-8" data-testid="section-value">
-              <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible, auditable, and controlled</h2>
-              <p className="text-lg text-muted-foreground">
-                Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework.
-              </p>
+            <div id="value" className="bg-white border border-gray-100 p-10 md:p-12 space-y-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow" data-testid="section-value">
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible, auditable, and controlled</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework.
+                </p>
 
-              <div>
-                <p className="font-semibold text-foreground mb-4">With Autopilot Approvals, you can:</p>
-                <ul className="space-y-3">
-                  {[
-                    "Automatically extract document details with AI-powered capture",
-                    "Route requests by rules, roles, departments, or thresholds",
-                    "Keep momentum with protected reassignment",
-                    "Capture every decision in a timestamped audit trail",
-                    "Approve from Web, Email, Microsoft Teams, or Mobile",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <p className="font-semibold text-foreground mb-4">With Autopilot Approvals, you can:</p>
+                  <ul className="space-y-3">
+                    {[
+                      "Automatically extract document details with AI-powered capture",
+                      "Route requests by rules, roles, departments, or thresholds",
+                      "Keep momentum with protected reassignment",
+                      "Capture every decision in a timestamped audit trail",
+                      "Approve from Web, Email, Microsoft Teams, or Mobile",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                        <span className="text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
