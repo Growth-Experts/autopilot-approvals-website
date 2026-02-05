@@ -14,6 +14,7 @@ import MessyInbox from "@/assets/messy-inbox.png";
 import Approvals_integration from "@assets/Approvals integration.png";
 
 import messy_inbox from "@assets/messy-inbox.jpg";
+import HeroWorkflow from "@/assets/hero-workflow.png";
 
 const BOOK_DEMO_URL = "https://example.com/book-demo";
 
@@ -38,6 +39,22 @@ export default function Home() {
               <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 font-bold px-10 h-12">
                 <a href="#value">Learn More</a>
               </Button>
+            </div>
+
+            <div className="mt-12">
+              <div className="mx-auto w-full max-w-5xl border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)]">
+                <div className="flex items-center gap-2 border-b border-border px-4 py-3">
+                  <div className="h-2.5 w-2.5 bg-red-400" />
+                  <div className="h-2.5 w-2.5 bg-yellow-400" />
+                  <div className="h-2.5 w-2.5 bg-green-400" />
+                  <div className="ml-auto text-[10px] uppercase tracking-widest text-muted-foreground">Autopilot approvals workflow</div>
+                </div>
+                <img
+                  src={HeroWorkflow}
+                  alt="Approval workflow preview"
+                  className="block w-full h-auto"
+                />
+              </div>
             </div>
           </div>
         </div>
