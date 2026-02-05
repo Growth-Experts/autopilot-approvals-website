@@ -62,9 +62,9 @@ export default function Home() {
       {/* Problem + Value */}
       <section className="py-20 md:py-32 bg-gray-50/50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Left: Problem */}
-            <div className="space-y-6">
+            <div className="bg-white border border-gray-100 p-10 md:p-12 space-y-6" data-testid="section-problem">
               <h2 className="text-3xl md:text-4xl font-bold">The approval bottleneck is real</h2>
               <p className="text-lg text-muted-foreground">
                 When requests sit in inboxes or get lost in side-conversations, teams slow down. What starts as a simple “Can you approve this?” quickly becomes:
@@ -89,8 +89,8 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Right: Value (moved up) */}
-            <div id="value" className="space-y-8">
+            {/* Right: Value */}
+            <div id="value" className="bg-white border border-gray-100 p-10 md:p-12 space-y-8" data-testid="section-value">
               <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible, auditable, and controlled</h2>
               <p className="text-lg text-muted-foreground">
                 Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework.
@@ -116,7 +116,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-14 flex flex-col items-center text-center">
+          <div className="mt-12 flex flex-col items-center text-center">
             <p className="text-xl font-bold text-primary" data-testid="text-fewer-emails">
               Fewer emails. Faster decisions. Stronger compliance.
             </p>
