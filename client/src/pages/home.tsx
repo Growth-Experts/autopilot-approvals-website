@@ -25,7 +25,7 @@ export default function Home() {
       <section className="pt-16 pb-20 md:pt-24 md:pb-32">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-[44px] leading-[1.05] md:text-6xl font-extrabold tracking-tight text-foreground">
+            <h1 className="text-[52px] leading-[1.02] md:text-7xl font-extrabold tracking-tight text-foreground">
               When approvals vanish, <span className="text-primary">accountability</span> goes with them
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
