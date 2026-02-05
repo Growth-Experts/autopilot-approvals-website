@@ -16,7 +16,7 @@ export function LogoStrip() {
     <section className="py-20 bg-gray-50 border-b border-gray-50/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center space-y-10">
-          <h3 className="text-lg md:text-xl font-bold text-foreground tracking-tight">Trusted by teams who value control, clarity, and compliance</h3>
+          <h3 className="text-2xl md:text-3xl font-extrabold text-foreground tracking-tight">Trusted by teams who value control, clarity, and compliance</h3>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-12 items-center justify-items-center">
             {LOGOS.map((logo, i) => (
