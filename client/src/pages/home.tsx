@@ -141,14 +141,14 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-8">
-              <Badge className="bg-blue-50 text-blue-700 border-blue-100 hover:bg-blue-100 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider gap-2">
+              <Badge className="bg-primary/5 text-primary border-primary/20 hover:bg-primary/10 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider gap-2">
                 <Check className="h-3 w-3" />
                 Strategic Partnership
               </Badge>
               
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-foreground">
-                  Your Trusted <span className="text-[#00A4EF]">Microsoft Partner</span>
+                  Your Trusted <span className="text-primary">Microsoft Partner</span>
                 </h2>
                 
                 <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
@@ -167,7 +167,7 @@ export default function Home() {
 
             {/* Right Card */}
             <div className="relative flex justify-center lg:justify-end">
-              <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full transform translate-x-12 translate-y-12" />
+              <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full transform translate-x-12 translate-y-12" />
               <div className="relative bg-white p-12 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 w-full max-w-md flex items-center justify-center aspect-[4/3]">
                 <img 
                   src="/src/assets/microsoft-partner.png" 
