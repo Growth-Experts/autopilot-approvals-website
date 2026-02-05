@@ -24,7 +24,7 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#value" className="text-sm text-muted-foreground hover:text-primary">
+                  <Link href="/#integrations" className="text-sm text-muted-foreground hover:text-primary" data-testid="link-footer-integrations">
                     Integrations
                   </Link>
                 </li>
