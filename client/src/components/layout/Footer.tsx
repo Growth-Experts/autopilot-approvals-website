@@ -24,9 +24,13 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#integrations" className="text-sm text-muted-foreground hover:text-primary" data-testid="link-footer-integrations">
+                  <a
+                    href="#integrations"
+                    className="text-sm text-muted-foreground hover:text-primary"
+                    data-testid="link-footer-integrations"
+                  >
                     Integrations
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
