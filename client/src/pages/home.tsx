@@ -62,6 +62,11 @@ export default function Home() {
       {/* Problem + Value */}
       <section className="py-20 md:py-32 bg-gray-50/50">
         <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+              Use one connected system for every approval
+            </h2>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             {/* Left: Problem */}
             <div className="bg-white border border-gray-100 p-10 md:p-12 space-y-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow" data-testid="section-problem">
