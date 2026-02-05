@@ -172,12 +172,22 @@ export default function Home() {
               </ul>
 
               <div className="pt-2" data-testid="section-microsoft-partner">
-                <img
-                  src="/src/assets/microsoft-partner.png"
-                  alt="Microsoft Partner"
-                  className="h-10 w-auto opacity-90"
-                  data-testid="img-microsoft-partner"
-                />
+                <div
+                  className="inline-flex items-center gap-4 border border-gray-200 bg-white px-5 py-3 shadow-[0_1px_0_rgba(0,0,0,0.04)]"
+                  data-testid="badge-microsoft-partner"
+                >
+                  <div className="shrink-0 border-r border-gray-200 pr-4" data-testid="badge-microsoft-partner-left">
+                    <img
+                      src="/src/assets/microsoft-partner.png"
+                      alt="Microsoft Partner"
+                      className="h-9 w-auto"
+                      data-testid="img-microsoft-partner"
+                    />
+                  </div>
+                  <p className="text-sm font-semibold text-foreground" data-testid="text-microsoft-partner">
+                    Autopilot is a Proud Microsoft Partner
+                  </p>
+                </div>
               </div>
             </div>
             <div className="flex justify-center">
