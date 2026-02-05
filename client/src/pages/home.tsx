@@ -178,30 +178,43 @@ export default function Home() {
         </div>
       </section>
       {/* How It Works */}
-      <section id="how" className="py-20 md:py-32 bg-gray-900 text-white">
-        <div className="container mx-auto px-4 md:px-6 space-y-16">
-          <div className="text-center max-w-3xl mx-auto space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">How Autopilot Approvals Works</h2>
-            <p className="text-lg text-gray-400">
+      <section id="how" className="py-20 md:py-32 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-4xl mx-auto">
+            <p
+              className="text-xs md:text-sm font-extrabold tracking-[0.22em] text-muted-foreground uppercase"
+              data-testid="text-how-eyebrow"
+            >
+              Made for people. Powered by process.
+            </p>
+            <h2 className="mt-5 text-3xl md:text-4xl font-bold text-foreground" data-testid="text-how-title">
+              How Autopilot Approvals Works
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground" data-testid="text-how-subtitle">
               Effortlessly integrate and automate your approval workflows in four simple steps.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
               { title: "Define Your Workflow", desc: "Map roles, routing rules, thresholds, and escalation paths.", step: "01" },
               { title: "Submit Requests", desc: "Employees upload documents or complete request forms - with AI auto-filling key details.", step: "02" },
               { title: "Automated Approvals", desc: "Autopilot routes every request based on policy, sending reminders to keep things moving.", step: "03" },
               { title: "Track & Report", desc: "View the full audit trail instantly, export reports, and maintain compliance effortlessly.", step: "04" }
-            ].map((item, i) => (
-              <div key={i} className="relative group">
-                <div className="text-6xl font-black text-white/20 absolute -top-4 -left-4 select-none group-hover:text-white/30 transition-colors">
+            ].map((item) => (
+              <div key={item.step} className="flex flex-col items-center text-center" data-testid={`card-how-step-${item.step}`}>
+                <div
+                  className="h-14 w-14 border border-border flex items-center justify-center text-xs font-extrabold tracking-widest text-muted-foreground bg-white"
+                  data-testid={`badge-how-step-${item.step}`}
+                >
                   {item.step}
                 </div>
-                <div className="relative space-y-4 pt-8 pl-4">
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{item.desc}</p>
-                </div>
+                <h3 className="mt-5 text-base font-bold text-foreground" data-testid={`text-how-step-title-${item.step}`}>
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground" data-testid={`text-how-step-desc-${item.step}`}>
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
