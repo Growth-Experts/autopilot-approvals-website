@@ -22,7 +22,7 @@ export default function Home() {
     <div className="min-h-screen bg-white font-sans text-foreground">
       <Navbar />
       {/* Hero Section */}
-      <section className="pt-16 pb-20 md:pt-24 md:pb-32">
+      <section className="pt-16 pb-20 md:pt-24 md:pb-32 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-50/10 to-gray-100/20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-[52px] leading-[1.02] md:text-7xl font-extrabold tracking-tight text-foreground">
@@ -244,7 +244,7 @@ export default function Home() {
         </div>
       </section>
       {/* Case Study Callout */}
-      <section className="py-20 md:py-32 bg-[#0B1220] text-white relative overflow-hidden">
+      <section className="py-20 md:py-32 bg-[#0B1220] text-white relative overflow-hidden border-t border-white/10 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.5)] z-10">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute -top-48 -left-48 h-[520px] w-[520px] bg-primary/20 blur-3xl" />
           <div className="absolute -bottom-56 -right-48 h-[560px] w-[560px] bg-primary/10 blur-3xl" />
