@@ -13,7 +13,7 @@ import MessyInbox from "@/assets/messy-inbox.png";
 import Approvals_integration from "@assets/Approvals integration.png";
 
 import messy_inbox from "@assets/messy-inbox.jpg";
-import HeroWorkflow from "@/assets/hero-workflow-v2.png";
+import HeroWorkflow from "@/assets/hero-workflow.png";
 
 const BOOK_DEMO_URL = "https://example.com/book-demo";
 
