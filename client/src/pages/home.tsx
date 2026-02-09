@@ -99,7 +99,7 @@ export default function Home() {
             {/* Right: Value */}
             <div id="value" className="bg-white border border-gray-100 p-10 md:p-12 space-y-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow" data-testid="section-value">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible, auditable, and controlled</h2>
+                <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework.
                 </p>
