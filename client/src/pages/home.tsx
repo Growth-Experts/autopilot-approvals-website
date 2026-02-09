@@ -41,7 +41,7 @@ export default function Home() {
             </div>
 
             <div className="mt-12">
-              <div className="mx-auto w-full max-w-5xl border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)]">
+              <div className="mx-auto w-full max-w-7xl border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)]">
                 <div style={{ position: 'relative', paddingBottom: 'calc(48.75% + 41px)', height: 0, width: '100%' }}>
                   <iframe 
                     src="https://demo.arcade.software/qRerQvYI52xF5OjiqhYh?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" 
