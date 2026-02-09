@@ -39,20 +39,20 @@ export default function Home() {
                 <a href="#value">Learn More</a>
               </Button>
             </div>
+          </div>
 
-            <div className="mt-12 w-full max-w-5xl mx-auto">
-              <div className="w-full border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)]">
-                <div style={{ position: 'relative', paddingBottom: 'calc(48.75% + 41px)', height: 0, width: '100%' }}>
-                  <iframe 
-                    src="https://demo.arcade.software/qRerQvYI52xF5OjiqhYh?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" 
-                    title="Submit an approval request with one or more approvers" 
-                    frameBorder="0" 
-                    loading="lazy" 
-                    allowFullScreen 
-                    allow="clipboard-write" 
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', colorScheme: 'light' }} 
-                  />
-                </div>
+          <div className="mt-12 w-full max-w-[1400px] mx-auto">
+            <div className="w-full border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)]">
+              <div style={{ position: 'relative', paddingBottom: 'calc(48.75% + 41px)', height: 0, width: '100%' }}>
+                <iframe 
+                  src="https://demo.arcade.software/qRerQvYI52xF5OjiqhYh?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" 
+                  title="Submit an approval request with one or more approvers" 
+                  frameBorder="0" 
+                  loading="lazy" 
+                  allowFullScreen 
+                  allow="clipboard-write" 
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', colorScheme: 'light' }} 
+                />
               </div>
             </div>
           </div>
