@@ -175,7 +175,7 @@ export default function Home() {
                 <img 
                   src="/src/assets/microsoft-partner-stacked.png" 
                   alt="Microsoft Partner" 
-                  className="w-full h-auto object-contain max-w-[160px]"
+                  className="w-full h-auto object-contain max-w-[200px]"
                 />
               </div>
             </div>
