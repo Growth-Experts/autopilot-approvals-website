@@ -81,6 +81,7 @@ export default function Home() {
                     "No ownership when everyone is CC’d",
                     "Policy gaps and inconsistent decisions",
                     "Slow turnarounds and stressful audit trails",
+                    "As your organization grows, so does the risk",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
@@ -91,9 +92,6 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-              <p className="text-lg font-semibold text-foreground pt-4 border-t border-gray-50">
-                As your organization grows, so does the risk.
-              </p>
             </div>
 
             {/* Right: Value */}
