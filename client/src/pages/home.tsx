@@ -41,7 +41,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12 w-full max-w-[1400px] mx-auto">
+          <div className="mt-12 w-full max-w-6xl mx-auto">
             <div className="w-full border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)]">
               <div style={{ position: 'relative', paddingBottom: 'calc(48.75% + 41px)', height: 0, width: '100%' }}>
                 <iframe 
