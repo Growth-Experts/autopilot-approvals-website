@@ -82,6 +82,7 @@ export default function Home() {
                     "No ownership when everyone is CC’d",
                     "Policy gaps and inconsistent decisions",
                     "Slow turnarounds and stressful audit trails",
+                    "As your organization grows, so does the risk",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
@@ -92,15 +93,12 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-              <p className="text-lg font-semibold text-foreground pt-4 border-t border-gray-50">
-                As your organization grows, so does the risk.
-              </p>
             </div>
 
             {/* Right: Value */}
             <div id="value" className="bg-white border border-gray-100 p-10 md:p-12 space-y-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow" data-testid="section-value">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible, auditable, and controlled</h2>
+                <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework.
                 </p>
@@ -172,13 +170,13 @@ export default function Home() {
             </div>
 
             {/* Right Card */}
-            <div className="relative flex justify-center lg:justify-end">
+            <div className="relative flex justify-center lg:justify-center">
               <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full transform translate-x-12 translate-y-12" />
               <div className="relative bg-white p-12 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 w-full max-w-sm flex items-center justify-center aspect-[4/3] hover:shadow-[0_30px_60px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300">
-                <img
-                  src={MicrosoftPartnerStacked}
-                  alt="Microsoft Partner"
-                  className="w-full h-auto object-contain max-w-[160px]"
+                <img 
+                  src="/src/assets/microsoft-partner-stacked.png" 
+                  alt="Microsoft Partner" 
+                  className="w-full h-auto object-contain max-w-[200px]"
                 />
               </div>
             </div>
