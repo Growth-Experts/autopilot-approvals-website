@@ -72,7 +72,7 @@ export default function Home() {
             {/* Left: Problem */}
             <div className="bg-white border border-gray-100 p-10 md:p-12 space-y-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow" data-testid="section-problem">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold">The approval bottleneck is real</h2>
+                <h2 className="text-3xl md:text-4xl font-bold min-h-[4rem] flex items-end">The approval bottleneck is real</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   When requests sit in inboxes or get lost in side-conversations, teams slow down. What starts as a simple “Can you approve this?” quickly becomes:
                 </p>
@@ -98,13 +98,12 @@ export default function Home() {
             {/* Right: Value */}
             <div id="value" className="bg-white border border-gray-100 p-10 md:p-12 space-y-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow" data-testid="section-value">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible</h2>
+                <h2 className="text-3xl md:text-4xl font-bold min-h-[4rem] flex items-end">Make every approval visible</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework.
+                  Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework. With Autopilot Approvals, you can:
                 </p>
 
                 <div>
-                  <p className="font-semibold text-foreground mb-4">With Autopilot Approvals, you can:</p>
                   <ul className="space-y-3">
                     {[
                       "Automatically extract document details with AI-powered capture",
