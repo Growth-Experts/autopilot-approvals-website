@@ -41,20 +41,18 @@ export default function Home() {
             </div>
 
             <div className="mt-12">
-              <div className="mx-auto w-full max-w-4xl border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)] overflow-hidden">
-                <div className="flex items-center gap-2 border-b border-border px-4 py-3 bg-white z-10 relative">
-                  <div className="h-3 w-3 bg-[#FF5F57] rounded-none" />
-                  <div className="h-3 w-3 bg-[#FEBC2E] rounded-none" />
-                  <div className="h-3 w-3 bg-[#28C840] rounded-none" />
-                  <div className="ml-auto text-[10px] md:text-xs font-medium uppercase tracking-widest text-muted-foreground">Autopilot Approvals Workflow</div>
+              <div className="mx-auto w-full max-w-5xl border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)]">
+                <div className="flex items-center gap-2 border-b border-border px-4 py-3">
+                  <div className="h-2.5 w-2.5 bg-red-400" />
+                  <div className="h-2.5 w-2.5 bg-yellow-400" />
+                  <div className="h-2.5 w-2.5 bg-green-400" />
+                  <div className="ml-auto text-[10px] uppercase tracking-widest text-muted-foreground">Autopilot approvals workflow</div>
                 </div>
-                <div className="relative -mt-8 md:-mt-10">
-                  <img
-                    src={HeroWorkflow}
-                    alt="Approval workflow preview"
-                    className="block w-full h-auto"
-                  />
-                </div>
+                <img
+                  src={HeroWorkflow}
+                  alt="Approval workflow preview"
+                  className="block w-full h-auto"
+                />
               </div>
             </div>
           </div>
