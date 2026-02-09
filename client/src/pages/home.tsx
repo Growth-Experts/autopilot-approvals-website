@@ -24,7 +24,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-16 pb-20 md:pt-24 md:pb-32 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-50/10 to-gray-100/20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
             <h1 className="text-[52px] leading-[1.02] md:text-7xl font-extrabold tracking-tight text-foreground">
               When approvals vanish, <span className="text-primary">accountability</span> goes with them
             </h1>
@@ -40,8 +40,8 @@ export default function Home() {
               </Button>
             </div>
 
-            <div className="mt-12">
-              <div className="mx-auto w-full max-w-7xl border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)]">
+            <div className="mt-12 w-full max-w-[1400px] mx-auto">
+              <div className="w-full border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)]">
                 <div style={{ position: 'relative', paddingBottom: 'calc(48.75% + 41px)', height: 0, width: '100%' }}>
                   <iframe 
                     src="https://demo.arcade.software/qRerQvYI52xF5OjiqhYh?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" 
