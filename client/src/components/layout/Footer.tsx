@@ -8,7 +8,7 @@ export function Footer() {
           <div className="md:col-span-1 space-y-6">
             <img src="/logo.png" alt="Autopilot Approvals" className="h-8 w-auto" />
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Replace inbox approvals with structured, policy-driven workflows.
+              Replace inbox approvals with structured,{" "}<span className="whitespace-nowrap">policy-driven workflows.</span>
             </p>
           </div>
 
@@ -29,6 +29,11 @@ export function Footer() {
                     data-testid="link-footer-integrations"
                   >
                     Integrations
+                  </a>
+                </li>
+                <li>
+                  <a href="/pricing" className="text-sm text-muted-foreground hover:text-primary">
+                    Pricing
                   </a>
                 </li>
               </ul>
