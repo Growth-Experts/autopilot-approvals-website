@@ -1,4 +1,3 @@
-import { Link } from "wouter";
 
 export function Footer() {
   return (
@@ -19,9 +18,9 @@ export function Footer() {
               <h3 className="font-semibold text-foreground">Product</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/#how" className="text-sm text-muted-foreground hover:text-primary">
+                  <a href="/#how" className="text-sm text-muted-foreground hover:text-primary">
                     Features
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <a
@@ -39,14 +38,14 @@ export function Footer() {
               <h3 className="font-semibold text-foreground">Resources</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/case-studies" className="text-sm text-muted-foreground hover:text-primary">
+                  <a href="/case-studies" className="text-sm text-muted-foreground hover:text-primary">
                     Case Studies
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">
+                  <a href="/contact" className="text-sm text-muted-foreground hover:text-primary">
                     Contact
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -55,6 +54,24 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
           <p>© 2026 Autopilot Approvals. All rights reserved.</p>
+          <div className="flex gap-4">
+            <a
+              href="https://cdn.autopilot.co.za/legal/Autopilot%20Client%20Terms%20%20Conditions%2020160224.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary"
+            >
+              Terms of Service
+            </a>
+            <a
+              href="https://cdn.autopilot.co.za/legal/teams/Autopilot%20Privacy%20Policy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary"
+            >
+              Privacy Policy
+            </a>
+          </div>
         </div>
       </div>
     </footer>
