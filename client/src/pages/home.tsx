@@ -10,7 +10,6 @@ import { Check } from "lucide-react";
 import { Link } from "wouter";
 
 import MessyInbox from "@/assets/messy-inbox.png";
-import Approvals_integration from "@assets/Approvals integration.png";
 
 import messy_inbox from "@assets/messy-inbox.jpg";
 import HeroWorkflow from "@/assets/hero-workflow.png";
@@ -225,8 +224,8 @@ export default function Home() {
 
               <div className="pt-2" data-testid="section-microsoft-partner" />
             </div>
-            <div className="flex justify-center">
-              <img src={Approvals_integration} alt="Autopilot Integrations with Teams, Xero, SharePoint and more" className="w-full max-w-md object-contain" />
+            <div className="flex justify-center overflow-hidden">
+              <img src="/integrations.png" alt="Autopilot Integrations with Teams, Xero, SharePoint and more" className="w-full max-w-2xl object-contain scale-[1.35]" />
             </div>
           </div>
         </div>
