@@ -224,8 +224,8 @@ export default function Home() {
 
               <div className="pt-2" data-testid="section-microsoft-partner" />
             </div>
-            <div className="flex justify-center overflow-hidden">
-              <img src="/integrations.png" alt="Autopilot Integrations with Teams, Xero, SharePoint and more" className="w-full max-w-2xl object-contain scale-[1.35]" />
+            <div className="flex justify-center">
+              <img src="/integrations.png" alt="Autopilot Integrations with Teams, Xero, SharePoint and more" className="w-full max-w-2xl object-contain" />
             </div>
           </div>
         </div>
