@@ -14,6 +14,9 @@ export function Navbar() {
       <Link href="/" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
         Home
       </Link>
+      <Link href="/pricing" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+        Pricing
+      </Link>
       <Link href="/case-studies" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
         Case Studies
       </Link>

@@ -10,6 +10,7 @@ import CaseStudiesIndex from "@/pages/case-studies/index";
 import TalksureCaseStudy from "@/pages/case-studies/talksure";
 import SaCanegrowersCaseStudy from "@/pages/case-studies/sa-canegrowers";
 import BookDemo from "@/pages/book-demo";
+import Pricing from "@/pages/pricing";
 
 import ScrollToTop from "@/components/layout/ScrollToTop";
 
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/book-demo" component={BookDemo} />
       <Route path="/contact" component={Contact} />
+      <Route path="/pricing" component={Pricing} />
       <Route path="/case-studies" component={CaseStudiesIndex} />
       <Route path="/case-studies/talksure" component={TalksureCaseStudy} />
       <Route path="/case-studies/sa-canegrowers" component={SaCanegrowersCaseStudy} />
