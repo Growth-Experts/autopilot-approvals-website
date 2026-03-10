@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 
 export function Footer() {
   return (
@@ -18,7 +19,7 @@ export function Footer() {
               <h3 className="font-semibold text-foreground">Product</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="/#how" className="text-sm text-muted-foreground hover:text-primary">
+                  <a href="/#features" className="text-sm text-muted-foreground hover:text-primary">
                     Features
                   </a>
                 </li>
@@ -32,25 +33,25 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="/pricing" className="text-sm text-muted-foreground hover:text-primary">
+                  <Link href="/pricing" className="text-sm text-muted-foreground hover:text-primary">
                     Pricing
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
-            
+
             <div className="space-y-4">
               <h3 className="font-semibold text-foreground">Resources</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="/case-studies" className="text-sm text-muted-foreground hover:text-primary">
+                  <Link href="/case-studies" className="text-sm text-muted-foreground hover:text-primary">
                     Case Studies
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/contact" className="text-sm text-muted-foreground hover:text-primary">
+                  <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">
                     Contact
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

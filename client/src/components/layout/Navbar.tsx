@@ -11,16 +11,19 @@ export function Navbar() {
 
   const NavItems = () => (
     <>
-      <Link href="/" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+      <Link href="/" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">
         Home
       </Link>
-      <Link href="/pricing" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+      <a href="/#features" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">
+        Features
+      </a>
+      <Link href="/pricing" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">
         Pricing
       </Link>
-      <Link href="/case-studies" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+      <Link href="/case-studies" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">
         Case Studies
       </Link>
-      <Link href="/contact" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+      <Link href="/contact" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">
         Contact
       </Link>
     </>
@@ -28,10 +31,10 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Autopilot Approvals" className="h-8 md:h-10 w-auto" />
+          <img src="/logo.png" alt="Autopilot Approvals" className="h-7 md:h-9 w-auto" />
         </Link>
 
         {/* Desktop Nav */}

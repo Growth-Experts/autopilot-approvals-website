@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
-  Check,
   FileSignature,
   BarChart2,
   Landmark,
@@ -12,59 +11,6 @@ import {
   Sparkles,
 } from "lucide-react";
 
-const TIERS = [
-  {
-    name: "Essentials",
-    volume: "Up to 1,000 workflows / mo",
-    baseLabel: "From",
-    price: "$500",
-    unit: "/ month",
-    rateNote: "$500 base + $1.00 per workflow above 100",
-    highlight: false,
-    features: [
-      "1 – 100 workflows included",
-      "101 – 1,000 workflows at $1.00 each",
-      "Unlimited users",
-      "Unlimited process types",
-      "Unlimited external approvers",
-      "Full audit trail & reporting",
-    ],
-  },
-  {
-    name: "Growth",
-    volume: "Up to 5,000 workflows / mo",
-    baseLabel: null,
-    price: "$0.70",
-    unit: "/ workflow above 1,000",
-    rateNote: "Custom pricing available for your volume.",
-    highlight: true,
-    features: [
-      "Everything in Essentials, plus:",
-      "1,001 – 5,000 workflows at $0.70 each",
-      "Lower cost per workflow at scale",
-      "Unlimited users",
-      "Unlimited process types",
-      "Unlimited external approvers",
-    ],
-  },
-  {
-    name: "Enterprise",
-    volume: "5,001+ workflows / mo",
-    baseLabel: null,
-    price: "$0.60",
-    unit: "/ workflow above 5,000",
-    rateNote: "Custom pricing available for your volume.",
-    highlight: false,
-    features: [
-      "Everything in Growth, plus:",
-      "5,001+ workflows at $0.60 each",
-      "Lowest cost per workflow",
-      "Unlimited users",
-      "Unlimited process types",
-      "Unlimited external approvers",
-    ],
-  },
-];
 
 const ADDONS = [
   {
@@ -119,80 +65,63 @@ export default function Pricing() {
           </div>
         </section>
 
-        {/* Tier Cards */}
+        {/* Pricing Section */}
         <section className="py-20 md:py-28 bg-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-4">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-                Autopilot plans start at just $500 / month
-              </h2>
-            </div>
-            <p className="text-center text-muted-foreground mb-12">
-              Volume and non-profit discounts are available
-            </p>
+            <div className="max-w-3xl mx-auto space-y-6">
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto items-stretch">
-              {TIERS.map((tier) => (
-                <div
-                  key={tier.name}
-                  className={`relative flex flex-col border rounded-lg shadow-sm overflow-hidden ${
-                    tier.highlight
-                      ? "border-primary"
-                      : "border-gray-200"
-                  }`}
-                >
-                  <div className={`text-xs font-bold uppercase tracking-widest text-center py-2 ${tier.highlight ? "bg-primary text-white" : "bg-transparent text-transparent select-none"}`}>
-                    Most Popular
-                  </div>
+              {/* Base License Card */}
+              <div className="border border-gray-200 rounded-lg shadow-sm p-8">
+                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">Base License</p>
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-5xl font-extrabold text-foreground">$500</span>
+                  <span className="text-lg text-muted-foreground font-medium">/ month</span>
+                </div>
+                <p className="text-muted-foreground">Includes 1 – 100 workflows initiated per month.</p>
+              </div>
 
-                  <div className="p-8 flex flex-col flex-grow">
-                    {/* Tier name & volume */}
-                    <h3 className="text-2xl font-bold text-foreground mb-1">{tier.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-6">{tier.volume}</p>
+              {/* Above Base Volume Card */}
+              <div className="border border-gray-200 rounded-lg shadow-sm p-8">
+                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Above Base Volume</p>
+                <p className="text-muted-foreground mb-8">Per workflow initiated, based on total monthly volume.</p>
 
-                    {/* Price */}
-                    <div className="mb-2">
-                      {tier.baseLabel && (
-                        <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">{tier.baseLabel} </span>
-                      )}
-                      <span className={`font-extrabold text-foreground ${tier.unit ? "text-4xl" : "text-2xl"}`}>{tier.price}</span>
-                      {tier.unit && (
-                        <span className="text-base text-muted-foreground font-medium"> {tier.unit}</span>
-                      )}
+                <div className="divide-y divide-gray-200">
+                  <div className="flex items-center justify-between py-5">
+                    <div>
+                      <p className="font-semibold text-foreground">Tier 1</p>
+                      <p className="text-sm text-muted-foreground">101 – 1,000 workflows</p>
                     </div>
-                    <p className="text-xs text-muted-foreground mb-8 leading-relaxed">{tier.rateNote}</p>
-
-                    {/* CTA */}
-                    <Button
-                      asChild
-                      size="lg"
-                      className={`w-full font-bold mb-8 ${
-                        tier.highlight
-                          ? "bg-primary hover:bg-primary/90 text-white"
-                          : "bg-foreground hover:bg-foreground/90 text-white"
-                      }`}
-                    >
-                      <Link href="/contact">Get Quote</Link>
-                    </Button>
-
-                    {/* Features */}
-                    <p className="text-sm font-semibold text-foreground mb-4">Plan includes:</p>
-                    <ul className="space-y-3 flex-grow">
-                      {tier.features.map((f) => (
-                        <li key={f} className="flex items-start gap-3">
-                          <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={3} />
-                          <span className="text-sm text-foreground">{f}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <span className="text-2xl font-extrabold text-foreground">$1.00</span>
+                  </div>
+                  <div className="flex items-center justify-between py-5">
+                    <div>
+                      <p className="font-semibold text-foreground">Tier 2</p>
+                      <p className="text-sm text-muted-foreground">1,001 – 5,000 workflows</p>
+                    </div>
+                    <span className="text-2xl font-extrabold text-foreground">$0.70</span>
+                  </div>
+                  <div className="flex items-center justify-between py-5">
+                    <div>
+                      <p className="font-semibold text-foreground">Tier 3</p>
+                      <p className="text-sm text-muted-foreground">5,001+ workflows</p>
+                    </div>
+                    <span className="text-2xl font-extrabold text-foreground">$0.60</span>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
 
-            <p className="mt-6 text-center text-sm text-muted-foreground">
-              Each rate applies only to workflows in that band — your base cost never retroactively changes.
-            </p>
+              {/* Custom Quote */}
+              <div className="text-center pt-4 space-y-4">
+                <p className="text-xl font-semibold text-foreground">Need a custom quote?</p>
+                <p className="text-muted-foreground">
+                  We'll tailor a plan to your workflow volume.
+                </p>
+                <Button asChild className="bg-primary hover:bg-primary/90 text-white font-semibold px-8">
+                  <Link href="/contact">Get in Touch</Link>
+                </Button>
+              </div>
+
+            </div>
           </div>
         </section>
 
@@ -201,10 +130,10 @@ export default function Pricing() {
           <div className="container mx-auto px-4 md:px-6">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-                Extend your workflows
+                Additional Features
               </h2>
               <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-                Autopilot integrates with the tools your team already uses. Add-ons are available on request.
+                These integrations carry additional per-transaction costs. Available on request.
               </p>
             </div>
 

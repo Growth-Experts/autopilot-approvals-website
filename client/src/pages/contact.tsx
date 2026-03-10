@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -63,7 +63,7 @@ export default function Contact() {
                   Get in touch!
                 </h1>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Ready to streamline your onboarding? Fill out the form below and our team will be in touch shortly.
+                  Ready to take control of your approval workflows? Fill out the form and our team will be in touch shortly.
                 </p>
               </div>
 
@@ -187,23 +187,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-1">Email Us</h3>
-                  <a href="mailto:hello@autopilot.com" className="text-xl md:text-2xl font-medium hover:text-primary transition-colors">
-                    hello@autopilot.com
+                  <a href="mailto:info@autopilot.co.za" className="text-xl md:text-2xl font-medium hover:text-primary transition-colors">
+                    info@autopilot.co.za
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-6">
-                <div className="h-12 w-12 rounded-full bg-primary flex items-center justify-center shrink-0">
-                  <Phone className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-1">Call Us</h3>
-                  <a href="tel:+15551234567" className="text-xl md:text-2xl font-medium hover:text-primary transition-colors">
-                    +1 (555) 123-4567
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
