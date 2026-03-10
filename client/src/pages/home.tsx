@@ -13,7 +13,6 @@ import MessyInbox from "@/assets/messy-inbox.png";
 
 import messy_inbox from "@assets/messy-inbox.jpg";
 import HeroWorkflow from "@/assets/hero-workflow.png";
-import MicrosoftPartnerStacked from "@/assets/microsoft-partner-stacked.png";
 
 const BOOK_DEMO_URL = "https://example.com/book-demo";
 
@@ -71,14 +70,14 @@ export default function Home() {
             {/* Left: Problem */}
             <div className="bg-white border border-gray-100 p-10 md:p-12 space-y-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow" data-testid="section-problem">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold min-h-[4rem] flex items-end">The approval bottleneck is real</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  When requests sit in inboxes or get lost in side-conversations, teams slow down. What starts as a simple “Can you approve this?” quickly becomes:
+                <h2 className="text-3xl md:text-4xl font-bold">The approval bottleneck is real</h2>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  When requests sit in inboxes or get lost in side-conversations, teams slow down. What starts as a simple &ldquo;Can you approve this?&rdquo; quickly becomes:
                 </p>
                 <ul className="space-y-4">
                   {[
                     "Vanishing requests buried in email threads",
-                    "No ownership when everyone is CC’d",
+                    "No ownership when everyone is CC'd",
                     "Policy gaps and inconsistent decisions",
                     "Slow turnarounds and stressful audit trails",
                     "As your organization grows, so does the risk",
@@ -87,7 +86,7 @@ export default function Home() {
                       <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
                         <div className="h-2 w-2 bg-red-500 rounded-full" />
                       </div>
-                      <span className="font-medium">{item}</span>
+                      <span className="text-base text-muted-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -97,9 +96,9 @@ export default function Home() {
             {/* Right: Value */}
             <div id="value" className="bg-white border border-gray-100 p-10 md:p-12 space-y-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow" data-testid="section-value">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold min-h-[4rem] flex items-end">Make every approval visible</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Autopilot brings all requests into one structured, policy-driven flow. No more chasing staff, no more lost context, and no more manual rework. With Autopilot Approvals, you can:
+                <h2 className="text-3xl md:text-4xl font-bold">Make every approval visible</h2>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  No more chasing staff, no more lost context, and no more manual rework. With Autopilot Approvals, you can:
                 </p>
 
                 <div>
@@ -149,7 +148,7 @@ export default function Home() {
               </Badge>
               
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-foreground">
+                <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight text-foreground whitespace-nowrap">
                   Your Trusted <span className="text-primary">Microsoft Partner</span>
                 </h2>
                 
@@ -165,17 +164,36 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+
+              {/* Integrated with badges */}
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Integrated With</p>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { label: "Microsoft Teams", color: "#6264A7" },
+                    { label: "Office 365", color: "#D83B01" },
+                    { label: "Copilot", color: "#0F6CBD" },
+                  ].map(({ label, color }) => (
+                    <div key={label} className="flex items-center gap-2 border border-gray-200 rounded px-4 py-2 bg-white shadow-sm">
+                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
+                      <span className="text-sm font-medium text-foreground">{label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Right Card */}
-            <div className="relative flex justify-center lg:justify-center">
-              <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full transform translate-x-12 translate-y-12" />
-              <div className="relative bg-white p-12 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 w-full max-w-sm flex items-center justify-center aspect-[4/3] hover:shadow-[0_30px_60px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300">
-                <img 
-                  src={MicrosoftPartnerStacked} 
-                  alt="Microsoft Partner" 
-                  className="w-full h-auto object-contain max-w-[200px]"
+            {/* Right: Copilot ecosystem photo */}
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+                <img
+                  src="/copilot-ecosystem.png"
+                  alt="Autopilot featured in the Microsoft Copilot partner ecosystem"
+                  className="w-full h-auto object-cover"
                 />
+                <div className="absolute bottom-0 left-0 right-0 bg-black/60 px-4 py-3">
+                  <p className="text-white text-sm font-medium">Autopilot featured in the Microsoft Copilot partner ecosystem</p>
+                </div>
               </div>
             </div>
           </div>
@@ -183,7 +201,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50">
+      <section id="features" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 space-y-16">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold">Key Features That Matter</h2>
@@ -292,7 +310,7 @@ export default function Home() {
                 Talksure: Approvals for 1,200+ employees now inside Microsoft Teams
               </h2>
               <p className="text-lg text-white/70 max-w-2xl mx-auto" data-testid="text-case-study-subtitle">
-                Talksure replaced rigid ERP workflows with Autopilot’s flexible approval process, making procurement faster, cleaner, and far easier to manage.
+                Talksure replaced rigid ERP workflows with Autopilot's flexible approval process, making procurement faster, cleaner, and far easier to manage.
               </p>
             </div>
 
