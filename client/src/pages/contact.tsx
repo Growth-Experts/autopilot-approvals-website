@@ -1,198 +1,94 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Mail } from "lucide-react";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { useToast } from "@/hooks/use-toast";
-
-const formSchema = z.object({
-  firstName: z.string().min(2, "First name is required"),
-  lastName: z.string().min(2, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Phone number is required"),
-  company: z.string().min(2, "Company name is required"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
+import { Mail, Phone, Users, Headphones, Handshake } from "lucide-react";
 
 export default function Contact() {
-  const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      company: "",
-      message: "",
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Message Sent",
-      description: "We've received your message and will get back to you shortly.",
-    });
-    form.reset();
-  }
-
   return (
     <div className="min-h-screen bg-white font-sans text-foreground flex flex-col">
       <Navbar />
 
       <main className="flex-grow">
-        <div className="grid lg:grid-cols-2 min-h-[calc(100vh-64px)]">
-          {/* Left Side: Form */}
-          <div className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 lg:py-0">
-            <div className="max-w-xl mx-auto w-full">
-              <div className="mb-12">
-                <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">
-                  Get in touch!
-                </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Ready to take control of your approval workflows? Fill out the form and our team will be in touch shortly.
-                </p>
+        {/* Header */}
+        <div className="bg-gray-50 py-16 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#1a2e5a] mb-4">
+            Contact Autopilot
+          </h1>
+          <p className="text-lg text-gray-600 max-w-lg mx-auto">
+            Whether you need a full demonstration, technical assistance, or partnership
+            information, we're here to help.
+          </p>
+        </div>
+
+        {/* Two column layout */}
+        <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-10">
+          {/* Left: Contact Cards */}
+          <div className="flex flex-col gap-6">
+            {/* General Inquiries */}
+            <div className="border border-gray-200 rounded-lg p-6">
+              <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-4">
+                <Users className="h-5 w-5 text-[#1a2e5a]" />
               </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">General Inquiries</h3>
+              <p className="text-gray-500 text-sm mb-4">
+                For general questions about the company, licensing, or corporate information.
+              </p>
+              <div className="space-y-2">
+                <a href="mailto:info@autopilot.co.za" className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#1a2e5a]">
+                  <Mail className="h-4 w-4 text-[#1a2e5a]" />
+                  info@autopilot.co.za
+                </a>
+                <a href="tel:+27011234567" className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#1a2e5a]">
+                  <Phone className="h-4 w-4 text-[#1a2e5a]" />
+                  +27 (0) 11 123 4567
+                </a>
+              </div>
+            </div>
 
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="firstName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">First Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Jane" {...field} className="bg-gray-50 border-gray-200 h-12" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="lastName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Last Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Doe" {...field} className="bg-gray-50 border-gray-200 h-12" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+            {/* Technical Support */}
+            <div className="border border-gray-200 rounded-lg p-6">
+              <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-4">
+                <Headphones className="h-5 w-5 text-[#1a2e5a]" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Technical Support</h3>
+              <p className="text-gray-500 text-sm mb-4">
+                If you are a current client and require technical assistance or support.
+              </p>
+              <a href="mailto:support@autopilot.co.za" className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#1a2e5a]">
+                <Mail className="h-4 w-4 text-[#1a2e5a]" />
+                support@autopilot.co.za
+              </a>
+            </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Work Email</FormLabel>
-                          <FormControl>
-                            <Input placeholder="jane@company.com" {...field} className="bg-gray-50 border-gray-200 h-12" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Phone Number</FormLabel>
-                          <FormControl>
-                            <Input placeholder="+1 (555) 000-0000" {...field} className="bg-gray-50 border-gray-200 h-12" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  <FormField
-                    control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Company Name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Acme Inc." {...field} className="bg-gray-50 border-gray-200 h-12" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Message</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="Tell us about your onboarding challenges..." 
-                            className="min-h-[160px] bg-gray-50 border-gray-200 resize-none p-4"
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <Button type="submit" size="lg" className="w-full h-14 font-bold text-base uppercase tracking-wide bg-primary hover:bg-primary/90 text-white rounded-none">
-                    Send Message
-                  </Button>
-                </form>
-              </Form>
+            {/* Partnerships */}
+            <div className="border border-gray-200 rounded-lg p-6">
+              <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-4">
+                <Handshake className="h-5 w-5 text-[#1a2e5a]" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Partnerships</h3>
+              <p className="text-gray-500 text-sm mb-4">
+                Interested in becoming an implementation Partner?
+              </p>
+              <a href="mailto:partners@autopilot.co.za" className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#1a2e5a]">
+                <Mail className="h-4 w-4 text-[#1a2e5a]" />
+                partners@autopilot.co.za
+              </a>
             </div>
           </div>
 
-          {/* Right Side: Contact Info & Geometric Background */}
-          <div className="bg-[#111111] relative overflow-hidden flex flex-col justify-center items-center text-white p-12 lg:p-24 min-h-[500px] lg:min-h-auto">
-            {/* Geometric Background Lines */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none">
-              <svg className="w-full h-full" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="400" cy="400" r="300" fill="none" stroke="white" strokeWidth="2" />
-                <line x1="0" y1="0" x2="800" y2="800" stroke="white" strokeWidth="2" />
-                <line x1="800" y1="0" x2="0" y2="800" stroke="white" strokeWidth="2" />
-                <line x1="200" y1="0" x2="600" y2="800" stroke="white" strokeWidth="2" />
-                <line x1="600" y1="0" x2="200" y2="800" stroke="white" strokeWidth="2" />
-              </svg>
-            </div>
-
-            <div className="relative z-10 space-y-10 max-w-md w-full">
-              <div className="flex items-start gap-6">
-                <div className="h-12 w-12 rounded-full bg-primary flex items-center justify-center shrink-0">
-                  <Mail className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-1">Email Us</h3>
-                  <a href="mailto:info@autopilot.co.za" className="text-xl md:text-2xl font-medium hover:text-primary transition-colors">
-                    info@autopilot.co.za
-                  </a>
-                </div>
-              </div>
-
+          {/* Right: Schedule Demo */}
+          <div className="border border-gray-200 rounded-lg p-6">
+            <h2 className="text-xl font-bold text-[#1a2e5a] mb-1">Schedule Your Live Demo</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              Pick a time that works for you and we'll send a calendar invite immediately.
+            </p>
+            <div className="w-full" style={{ minHeight: 600 }}>
+              <iframe
+                src="https://calendly.com/marklehrer-autopilot/30min"
+                width="100%"
+                height="600"
+                style={{ border: "none" }}
+                title="Schedule a demo"
+              />
             </div>
           </div>
         </div>
