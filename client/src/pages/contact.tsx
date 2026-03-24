@@ -1,203 +1,102 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Mail } from "lucide-react";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { useToast } from "@/hooks/use-toast";
-
-const formSchema = z.object({
-  firstName: z.string().min(2, "First name is required"),
-  lastName: z.string().min(2, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Phone number is required"),
-  company: z.string().min(2, "Company name is required"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Mail, Phone, Users, HelpCircle, Handshake } from "lucide-react";
+import { InlineWidget } from "react-calendly";
 
 export default function Contact() {
-  const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      company: "",
-      message: "",
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Message Sent",
-      description: "We've received your message and will get back to you shortly.",
-    });
-    form.reset();
-  }
-
   return (
     <div className="min-h-screen bg-white font-sans text-foreground flex flex-col">
       <Navbar />
+      <main className="flex-grow bg-gray-50 py-16 px-6">
+      <div>
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Autopilot</h1>
+          <p className="text-xl text-gray-600">Whether you need a full demonstration, technical assistance, or partnership information, we're here to help.</p>
+        </div>
 
-      <main className="flex-grow">
-        <div className="grid lg:grid-cols-2 min-h-[calc(100vh-64px)]">
-          {/* Left Side: Form */}
-          <div className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 lg:py-0">
-            <div className="max-w-xl mx-auto w-full">
-              <div className="mb-12">
-                <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">
-                  Get in touch!
-                </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Ready to take control of your approval workflows? Fill out the form and our team will be in touch shortly.
-                </p>
-              </div>
-
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="firstName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">First Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Jane" {...field} className="bg-gray-50 border-gray-200 h-12" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="lastName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Last Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Doe" {...field} className="bg-gray-50 border-gray-200 h-12" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 max-w-7xl mx-auto items-stretch">
+          {/* Left Column: Contact Info Blocks */}
+          <div className="lg:col-span-4 flex flex-col gap-6 h-full">
+            {/* General Inquiries */}
+            <Card className="border-gray-100 shadow-md hover:shadow-lg transition-shadow flex-1">
+              <CardHeader className="pb-3">
+                <div className="w-10 h-10 bg-blue-100 rounded-none flex items-center justify-center text-primary mb-3">
+                  <Users className="h-5 w-5" />
+                </div>
+                <CardTitle className="text-lg">General Inquiries</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm">
+                <p className="text-gray-600">For general questions about the company, licensing, or corporate information.</p>
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center gap-3 font-medium">
+                    <Mail className="h-4 w-4 text-accent" />
+                    <span>info@autopilot.co.za</span>
                   </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Work Email</FormLabel>
-                          <FormControl>
-                            <Input placeholder="jane@company.com" {...field} className="bg-gray-50 border-gray-200 h-12" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Phone Number</FormLabel>
-                          <FormControl>
-                            <Input placeholder="+1 (555) 000-0000" {...field} className="bg-gray-50 border-gray-200 h-12" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                  <div className="flex items-center gap-3 font-medium">
+                    <Phone className="h-4 w-4 text-accent" />
+                    <span>+27 (0) 11 123 4567</span>
                   </div>
+                </div>
+              </CardContent>
+            </Card>
 
-                  <FormField
-                    control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Company Name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Acme Inc." {...field} className="bg-gray-50 border-gray-200 h-12" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+            {/* Technical Support */}
+            <Card className="border-gray-100 shadow-md hover:shadow-lg transition-shadow flex-1">
+              <CardHeader className="pb-3">
+                <div className="w-10 h-10 bg-blue-100 rounded-none flex items-center justify-center text-primary mb-3">
+                  <HelpCircle className="h-5 w-5" />
+                </div>
+                <CardTitle className="text-lg">Technical Support</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm">
+                <p className="text-gray-600">If you are a current client and require technical assistance or support.</p>
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center gap-3 font-medium">
+                    <Mail className="h-4 w-4 text-accent" />
+                    <span>support@autopilot.co.za</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Message</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="Tell us about your onboarding challenges..." 
-                            className="min-h-[160px] bg-gray-50 border-gray-200 resize-none p-4"
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <Button type="submit" size="lg" className="w-full h-14 font-bold text-base uppercase tracking-wide bg-primary hover:bg-primary/90 text-white rounded-none">
-                    Send Message
-                  </Button>
-                </form>
-              </Form>
-            </div>
+            {/* Partnership */}
+            <Card className="border-gray-100 shadow-md hover:shadow-lg transition-shadow flex-1">
+              <CardHeader className="pb-3">
+                <div className="w-10 h-10 bg-blue-100 rounded-none flex items-center justify-center text-primary mb-3">
+                  <Handshake className="h-5 w-5" />
+                </div>
+                <CardTitle className="text-lg">Partnerships</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm">
+                <p className="text-gray-600">Interested in becoming an Implementation Partner?</p>
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center gap-3 font-medium">
+                    <Mail className="h-4 w-4 text-accent" />
+                    <span>partners@autopilot.co.za</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
-          {/* Right Side: Contact Info & Geometric Background */}
-          <div className="bg-[#111111] relative overflow-hidden flex flex-col justify-center items-center text-white p-12 lg:p-24 min-h-[500px] lg:min-h-auto">
-            {/* Geometric Background Lines */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none">
-              <svg className="w-full h-full" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="400" cy="400" r="300" fill="none" stroke="white" strokeWidth="2" />
-                <line x1="0" y1="0" x2="800" y2="800" stroke="white" strokeWidth="2" />
-                <line x1="800" y1="0" x2="0" y2="800" stroke="white" strokeWidth="2" />
-                <line x1="200" y1="0" x2="600" y2="800" stroke="white" strokeWidth="2" />
-                <line x1="600" y1="0" x2="200" y2="800" stroke="white" strokeWidth="2" />
-              </svg>
-            </div>
+          {/* Right Column: Calendly */}
+          <div className="lg:col-span-8 flex flex-col h-full">
+            <div
+              className="bg-white p-4 md:p-6 rounded-none shadow-lg border border-gray-100 flex-1 h-full"
+              data-testid="card-contact-calendly"
+            >
+              <h2 className="text-2xl font-bold mb-2" data-testid="text-contact-calendly-title">Schedule Your Live Demo</h2>
+              <p className="text-gray-600 mb-6" data-testid="text-contact-calendly-subtitle">Pick a time that works for you and we'll send a calendar invite immediately.</p>
 
-            <div className="relative z-10 space-y-10 max-w-md w-full">
-              <div className="flex items-start gap-6">
-                <div className="h-12 w-12 rounded-full bg-primary flex items-center justify-center shrink-0">
-                  <Mail className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-1">Email Us</h3>
-                  <a href="mailto:info@autopilot.co.za" className="text-xl md:text-2xl font-medium hover:text-primary transition-colors">
-                    info@autopilot.co.za
-                  </a>
-                </div>
+              <div className="border border-gray-200 shadow-sm rounded-none overflow-hidden" data-testid="embed-contact-calendly">
+                <InlineWidget url="https://calendly.com/marklehrer-autopilot/30min" styles={{ height: "820px", width: "100%" }} />
               </div>
-
             </div>
           </div>
         </div>
+      </div>
       </main>
-
       <Footer />
     </div>
   );
