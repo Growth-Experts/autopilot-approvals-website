@@ -1,13 +1,15 @@
-import Section from "@/components/layout/Section";
-import { Button } from "@/components/ui/button";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, Users, HelpCircle, Handshake } from "lucide-react";
 import { InlineWidget } from "react-calendly";
 
 export default function Contact() {
   return (
-    <div className="flex flex-col">
-      <Section background="gray">
+    <div className="min-h-screen bg-white font-sans text-foreground flex flex-col">
+      <Navbar />
+      <main className="flex-grow bg-gray-50 py-16 px-6">
+      <div>
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Autopilot</h1>
           <p className="text-xl text-gray-600">Whether you need a full demonstration, technical assistance, or partnership information, we're here to help.</p>
@@ -93,7 +95,9 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </Section>
+      </div>
+      </main>
+      <Footer />
     </div>
   );
 }
