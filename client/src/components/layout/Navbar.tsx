@@ -42,9 +42,9 @@ export function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:flex">
           <Button asChild className="bg-primary hover:bg-primary/90 text-white font-semibold px-6">
-            <Link href="/book-demo">
+            <a href="https://autopilotapprovals.com/book-demo" target="_blank" rel="noopener noreferrer">
               Book a Demo
-            </Link>
+            </a>
           </Button>
         </div>
 
@@ -61,9 +61,9 @@ export function Navbar() {
               <div className="flex flex-col gap-6 mt-8">
                 <NavItems />
                 <Button asChild className="bg-primary hover:bg-primary/90 text-white w-full">
-                  <Link href="/book-demo">
+                  <a href="https://autopilotapprovals.com/book-demo" target="_blank" rel="noopener noreferrer">
                     Book a Demo
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </SheetContent>

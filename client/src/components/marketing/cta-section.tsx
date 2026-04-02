@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
-const BOOK_DEMO_URL = "https://example.com/book-demo";
+const BOOK_DEMO_URL = "https://autopilotapprovals.com/book-demo";
 
 export function CTASection() {
   return (

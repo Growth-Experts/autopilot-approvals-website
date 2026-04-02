@@ -33,10 +33,6 @@ export default function BookDemo() {
                     <Mail className="h-4 w-4 text-accent" />
                     <span>info@autopilot.co.za</span>
                   </div>
-                  <div className="flex items-center gap-3 font-medium">
-                    <Phone className="h-4 w-4 text-accent" />
-                    <span>+27 (0) 11 123 4567</span>
-                  </div>
                 </div>
               </CardContent>
             </Card>

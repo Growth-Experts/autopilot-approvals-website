@@ -243,7 +243,7 @@ export default function SaCanegrowersCaseStudy() {
                     className="w-full mt-6 bg-primary hover:bg-primary/90 text-white font-bold rounded-none"
                     data-testid="button-request-demo"
                   >
-                    <Link href="/book-demo">Request a demo</Link>
+                    <a href="https://autopilotapprovals.com/book-demo" target="_blank" rel="noopener noreferrer">Request a demo</a>
                   </Button>
                 </div>
               </div>

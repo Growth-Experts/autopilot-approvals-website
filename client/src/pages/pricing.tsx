@@ -184,7 +184,7 @@ export default function Pricing() {
                 size="lg"
                 className="border-white text-white hover:bg-white/10 font-bold px-8 h-14 text-base"
               >
-                <Link href="/book-demo">Book a Demo</Link>
+                <a href="https://autopilotapprovals.com/book-demo" target="_blank" rel="noopener noreferrer">Book a Demo</a>
               </Button>
             </div>
             <p className="text-sm text-blue-100 pt-2">
