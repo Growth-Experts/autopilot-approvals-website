@@ -30,9 +30,9 @@ export function CTASection() {
 
         <div className="pt-4">
           <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 font-bold px-8 h-14 text-base shadow-xl">
-            <Link href="/book-demo">
+            <a href="https://autopilotapprovals.com/book-demo" target="_blank" rel="noopener noreferrer">
               Book a Demo
-            </Link>
+            </a>
           </Button>
         </div>
       </div>

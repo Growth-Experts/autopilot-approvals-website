@@ -49,9 +49,9 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/book-demo" className="text-sm text-muted-foreground hover:text-primary">
+                  <a href="https://autopilotapprovals.com/book-demo" className="text-sm text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
                     Book a Demo
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
