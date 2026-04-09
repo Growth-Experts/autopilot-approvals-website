@@ -69,7 +69,7 @@ export default function BookDemo() {
                 <div className="space-y-2 pt-1">
                   <div className="flex items-center gap-3 font-medium">
                     <Mail className="h-4 w-4 text-accent" />
-                    <span>partners@autopilot.co.za</span>
+                    <span>info@autopilot.co.za</span>
                   </div>
                 </div>
               </CardContent>
@@ -86,7 +86,7 @@ export default function BookDemo() {
               <p className="text-gray-600 mb-6">Pick a time that works for you and we'll send a calendar invite immediately.</p>
 
               <div className="border border-gray-200 shadow-sm rounded-none overflow-hidden">
-                <InlineWidget url="https://calendly.com/marklehrer-autopilot/30min" styles={{ height: "820px", width: "100%" }} />
+                <InlineWidget url="https://calendly.com/marklehrer-autopilot/autopilotworkflows-accounts-payable" styles={{ height: "820px", width: "100%" }} />
               </div>
             </div>
           </div>
