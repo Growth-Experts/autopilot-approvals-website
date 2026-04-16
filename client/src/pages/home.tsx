@@ -249,16 +249,16 @@ export default function Home() {
         </div>
       </section>
       {/* How It Works */}
-      <section id="how" className="py-20 md:py-32 bg-white">
+      <section id="how" className="py-20 md:py-32 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto">
             <p
-              className="text-xs md:text-sm font-extrabold tracking-[0.22em] text-muted-foreground uppercase"
+              className="text-xs md:text-sm font-extrabold tracking-[0.22em] text-primary uppercase"
               data-testid="text-how-eyebrow"
             >
               Made for people. Powered by process.
             </p>
-            <h2 className="mt-5 text-3xl md:text-4xl font-bold text-foreground" data-testid="text-how-title">
+            <h2 className="mt-4 text-4xl md:text-5xl font-extrabold tracking-tight text-foreground" data-testid="text-how-title">
               How Autopilot Approvals Works
             </h2>
             <p className="mt-4 text-lg text-muted-foreground" data-testid="text-how-subtitle">
@@ -266,24 +266,32 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
             {[
               { title: "Define Your Workflow", desc: "Map roles, routing rules, thresholds, and escalation paths.", step: "01" },
-              { title: "Submit Requests", desc: "Employees upload documents or complete request forms - with AI auto-filling key details.", step: "02" },
+              { title: "Submit Requests", desc: "Employees upload documents or complete request forms — with AI auto-filling key details.", step: "02" },
               { title: "Automated Approvals", desc: "Autopilot routes every request based on policy, sending reminders to keep things moving.", step: "03" },
               { title: "Track & Report", desc: "View the full audit trail instantly, export reports, and maintain compliance effortlessly.", step: "04" }
-            ].map((item) => (
-              <div key={item.step} className="flex flex-col items-center text-center group" data-testid={`card-how-step-${item.step}`}>
+            ].map((item, index, arr) => (
+              <div key={item.step} className="relative flex flex-col items-center text-center group px-6 py-10 bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow" data-testid={`card-how-step-${item.step}`}>
+                {/* Arrow between cards — hidden on last item and on mobile */}
+                {index < arr.length - 1 && (
+                  <div className="hidden lg:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-8 h-8 bg-white border border-gray-200 rounded-full shadow-sm">
+                    <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                )}
                 <div
-                  className="h-14 w-14 border border-border flex items-center justify-center text-xs font-extrabold tracking-widest text-muted-foreground bg-white group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300"
+                  className="h-16 w-16 bg-primary flex items-center justify-center text-sm font-extrabold tracking-widest text-white shadow-md"
                   data-testid={`badge-how-step-${item.step}`}
                 >
                   {item.step}
                 </div>
-                <h3 className="mt-5 text-base font-bold text-foreground" data-testid={`text-how-step-title-${item.step}`}>
+                <h3 className="mt-6 text-lg font-extrabold text-foreground" data-testid={`text-how-step-title-${item.step}`}>
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground" data-testid={`text-how-step-desc-${item.step}`}>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground" data-testid={`text-how-step-desc-${item.step}`}>
                   {item.desc}
                 </p>
               </div>
