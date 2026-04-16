@@ -49,7 +49,7 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <a href="https://autopilotapprovals.com/book-demo" className="text-sm text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
+                  <a href="https://calendly.com/marklehrer-autopilot/30min" className="text-sm text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
                     Book a Demo
                   </a>
                 </li>

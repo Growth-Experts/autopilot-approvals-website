@@ -233,10 +233,10 @@ export default function ROICalculator() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-10 h-12">
-              <Link href="/book-demo">
+              <a href="https://calendly.com/marklehrer-autopilot/30min" target="_blank" rel="noopener noreferrer">
                 See How It Works
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </a>
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
