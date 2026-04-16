@@ -23,6 +23,9 @@ export function Navbar() {
       <Link href="/case-studies" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">
         Case Studies
       </Link>
+      <Link href="/roi-calculator" className="text-base font-medium text-foreground/80 hover:text-primary transition-colors">
+        ROI Calculator
+      </Link>
     </>
   );
 

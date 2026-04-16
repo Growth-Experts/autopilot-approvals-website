@@ -11,6 +11,7 @@ import TalksureCaseStudy from "@/pages/case-studies/talksure";
 import SaCanegrowersCaseStudy from "@/pages/case-studies/sa-canegrowers";
 import BookDemo from "@/pages/book-demo";
 import Pricing from "@/pages/pricing";
+import ROICalculator from "@/pages/roi-calculator";
 
 import ScrollToTop from "@/components/layout/ScrollToTop";
 
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/case-studies" component={CaseStudiesIndex} />
       <Route path="/case-studies/talksure" component={TalksureCaseStudy} />
       <Route path="/case-studies/sa-canegrowers" component={SaCanegrowersCaseStudy} />
+      <Route path="/roi-calculator" component={ROICalculator} />
       <Route component={NotFound} />
     </Switch>
   );
