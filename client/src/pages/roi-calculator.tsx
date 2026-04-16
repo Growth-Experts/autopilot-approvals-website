@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { TrendingDown, Users, ArrowRight } from "lucide-react";
+import { TrendingDown, TrendingUp, Users, ArrowRight, DollarSign } from "lucide-react";
 
 function formatCurrency(value: number): string {
   return new Intl.NumberFormat("en-US", {
@@ -14,12 +14,34 @@ function formatCurrency(value: number): string {
   }).format(value);
 }
 
+function calcAutopilotCost(workflows: number): number {
+  // Base: $500/month covers 1–100 workflows
+  if (workflows <= 100) return 500;
+  // Tier 1: 101–1,000 at $1.00 each
+  if (workflows <= 1000) return 500 + (workflows - 100) * 1.0;
+  // Tier 2: 1,001–5,000 at $0.70 each
+  if (workflows <= 5000) return 500 + 900 * 1.0 + (workflows - 1000) * 0.7;
+  // Tier 3: 5,001+ at $0.60 each
+  return 500 + 900 * 1.0 + 4000 * 0.7 + (workflows - 5000) * 0.6;
+}
+
+function getPricingTierLabel(workflows: number): string {
+  if (workflows <= 100) return "Base (1–100 workflows)";
+  if (workflows <= 1000) return "Tier 1 (101–1,000 workflows)";
+  if (workflows <= 5000) return "Tier 2 (1,001–5,000 workflows)";
+  return "Tier 3 (5,001+ workflows)";
+}
+
 export default function ROICalculator() {
   const [managerCount, setManagerCount] = useState(5);
   const [licenseUsdPerUser, setLicenseUsdPerUser] = useState(150);
+  const [monthlyWorkflows, setMonthlyWorkflows] = useState(50);
 
-  const monthlySavings = managerCount * licenseUsdPerUser;
-  const annualSavings = monthlySavings * 12;
+  const erpCostMonthly = managerCount * licenseUsdPerUser;
+  const autopilotCostMonthly = calcAutopilotCost(monthlyWorkflows);
+  const netSavingMonthly = erpCostMonthly - autopilotCostMonthly;
+  const netSavingAnnual = netSavingMonthly * 12;
+  const isPositive = netSavingMonthly > 0;
 
   return (
     <div className="min-h-screen bg-white font-sans text-foreground">
@@ -36,7 +58,7 @@ export default function ROICalculator() {
           </h1>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             Finance teams pay for expensive ERP licenses just so managers can click "Approve" once a week.
-            See exactly how much you could save by moving approvals to Microsoft Teams.
+            See your net saving after switching to Autopilot on Microsoft Teams.
           </p>
         </div>
       </section>
@@ -99,6 +121,31 @@ export default function ROICalculator() {
                   Check your SAP, Oracle, Xero, or QuickBooks invoice for the per-seat cost.
                 </p>
               </div>
+
+              {/* Slider 3 */}
+              <div className="space-y-3">
+                <div className="flex justify-between items-baseline">
+                  <label className="text-sm font-semibold text-foreground">
+                    Monthly approval workflows
+                  </label>
+                  <span className="text-2xl font-extrabold text-primary tabular-nums">
+                    {monthlyWorkflows.toLocaleString()}
+                  </span>
+                </div>
+                <Slider
+                  min={1}
+                  max={5000}
+                  step={10}
+                  value={[monthlyWorkflows]}
+                  onValueChange={([v]) => setMonthlyWorkflows(v)}
+                />
+                <div className="flex justify-between text-xs text-muted-foreground">
+                  <span>1</span><span>5,000+</span>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  Total approval requests initiated per month (invoices, leave, procurement, etc.)
+                </p>
+              </div>
             </div>
 
             {/* Results */}
@@ -107,44 +154,68 @@ export default function ROICalculator() {
                 <h2 className="text-xl font-bold opacity-90">Your potential savings</h2>
 
                 <div className="space-y-6">
+                  {/* ERP cost removed */}
                   <div className="flex items-start gap-4">
                     <div className="bg-white/20 rounded-full p-2 shrink-0">
                       <TrendingDown className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium opacity-80">License savings per month</p>
-                      <p className="text-5xl font-extrabold tabular-nums mt-1">
-                        {formatCurrency(monthlySavings)}
+                      <p className="text-sm font-medium opacity-80">ERP licenses removed</p>
+                      <p className="text-4xl font-extrabold tabular-nums mt-1">
+                        {formatCurrency(erpCostMonthly)}<span className="text-lg font-medium opacity-70">/mo</span>
                       </p>
+                      <p className="text-xs opacity-60 mt-1">{managerCount} managers × {formatCurrency(licenseUsdPerUser)}/seat</p>
                     </div>
                   </div>
 
+                  {/* Autopilot cost */}
                   <div className="border-t border-white/20 pt-6 flex items-start gap-4">
                     <div className="bg-white/20 rounded-full p-2 shrink-0">
-                      <TrendingDown className="h-5 w-5" />
+                      <DollarSign className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium opacity-80">License savings per year</p>
-                      <p className="text-5xl font-extrabold tabular-nums mt-1">
-                        {formatCurrency(annualSavings)}
+                      <p className="text-sm font-medium opacity-80">Autopilot subscription</p>
+                      <p className="text-4xl font-extrabold tabular-nums mt-1">
+                        {formatCurrency(autopilotCostMonthly)}<span className="text-lg font-medium opacity-70">/mo</span>
+                      </p>
+                      <p className="text-xs opacity-60 mt-1">{getPricingTierLabel(monthlyWorkflows)}</p>
+                    </div>
+                  </div>
+
+                  {/* Net saving */}
+                  <div className="border-t border-white/20 pt-6 flex items-start gap-4">
+                    <div className={`rounded-full p-2 shrink-0 ${isPositive ? "bg-green-400/30" : "bg-red-400/30"}`}>
+                      {isPositive ? <TrendingDown className="h-5 w-5" /> : <TrendingUp className="h-5 w-5" />}
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium opacity-80">Net saving per month</p>
+                      <p className={`text-5xl font-extrabold tabular-nums mt-1 ${isPositive ? "" : "opacity-70"}`}>
+                        {isPositive ? "" : "−"}{formatCurrency(Math.abs(netSavingMonthly))}
+                      </p>
+                      <p className="text-sm opacity-80 mt-2">
+                        {isPositive
+                          ? `${formatCurrency(netSavingAnnual)} saved per year`
+                          : "Increase approval volume or reduce ERP seats to see savings"}
                       </p>
                     </div>
                   </div>
 
+                  {/* Managers freed */}
                   <div className="border-t border-white/20 pt-6 flex items-start gap-4">
                     <div className="bg-white/20 rounded-full p-2 shrink-0">
                       <Users className="h-5 w-5" />
                     </div>
                     <div>
                       <p className="text-sm font-medium opacity-80">Managers freed from ERP logins</p>
-                      <p className="text-5xl font-extrabold tabular-nums mt-1">{managerCount}</p>
+                      <p className="text-4xl font-extrabold tabular-nums mt-1">{managerCount}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <p className="text-xs text-muted-foreground px-1">
-                * Savings are estimated based on eliminating approval-only ERP seats. Actual savings depend on your licensing agreements.
+                * ERP savings assume approval-only seats are fully removed. Autopilot cost based on published pricing. Actual results depend on your agreements.{" "}
+                <Link href="/pricing" className="underline hover:text-primary">View full pricing →</Link>
               </p>
             </div>
           </div>
@@ -162,10 +233,10 @@ export default function ROICalculator() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-10 h-12">
-              <Link href="/book-demo">
+              <a href="https://calendly.com/marklehrer-autopilot/30min" target="_blank" rel="noopener noreferrer">
                 See How It Works
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </a>
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">

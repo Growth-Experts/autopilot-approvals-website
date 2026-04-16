@@ -243,7 +243,7 @@ export default function SaCanegrowersCaseStudy() {
                     className="w-full mt-6 bg-primary hover:bg-primary/90 text-white font-bold rounded-none"
                     data-testid="button-request-demo"
                   >
-                    <a href="https://autopilotapprovals.com/book-demo" target="_blank" rel="noopener noreferrer">Request a demo</a>
+                    <a href="https://calendly.com/marklehrer-autopilot/30min" target="_blank" rel="noopener noreferrer">Request a demo</a>
                   </Button>
                 </div>
               </div>

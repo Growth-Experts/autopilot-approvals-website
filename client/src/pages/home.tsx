@@ -14,7 +14,7 @@ import MessyInbox from "@/assets/messy-inbox.png";
 import messy_inbox from "@assets/messy-inbox.jpg";
 import HeroWorkflow from "@/assets/hero-workflow.png";
 
-const BOOK_DEMO_URL = "https://example.com/book-demo";
+const BOOK_DEMO_URL = "https://calendly.com/marklehrer-autopilot/30min";
 
 export default function Home() {
   return (

@@ -4,7 +4,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 
-const BOOK_DEMO_URL = "https://example.com/book-demo";
+const BOOK_DEMO_URL = "https://calendly.com/marklehrer-autopilot/30min";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +45,7 @@ export function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:flex">
           <Button asChild className="bg-primary hover:bg-primary/90 text-white font-semibold px-6">
-            <a href="https://autopilotapprovals.com/book-demo" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendly.com/marklehrer-autopilot/30min" target="_blank" rel="noopener noreferrer">
               Book a Demo
             </a>
           </Button>
@@ -64,7 +64,7 @@ export function Navbar() {
               <div className="flex flex-col gap-6 mt-8">
                 <NavItems />
                 <Button asChild className="bg-primary hover:bg-primary/90 text-white w-full">
-                  <a href="https://autopilotapprovals.com/book-demo" target="_blank" rel="noopener noreferrer">
+                  <a href="https://calendly.com/marklehrer-autopilot/30min" target="_blank" rel="noopener noreferrer">
                     Book a Demo
                   </a>
                 </Button>
