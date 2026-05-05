@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { TrendingDown, TrendingUp, Users, ArrowRight, DollarSign } from "lucide-react";
+import { TrendingDown, Users, ArrowRight, DollarSign } from "lucide-react";
 
 function formatCurrency(value: number): string {
   return new Intl.NumberFormat("en-US", {
@@ -35,7 +35,7 @@ function getPricingTierLabel(workflows: number): string {
 export default function ROICalculator() {
   const [managerCount, setManagerCount] = useState(5);
   const [licenseUsdPerUser, setLicenseUsdPerUser] = useState(150);
-  const [monthlyWorkflows, setMonthlyWorkflows] = useState(50);
+  const [monthlyWorkflows, setMonthlyWorkflows] = useState(75);
 
   const erpCostMonthly = managerCount * licenseUsdPerUser;
   const autopilotCostMonthly = calcAutopilotCost(monthlyWorkflows);
@@ -83,14 +83,14 @@ export default function ROICalculator() {
                   </span>
                 </div>
                 <Slider
-                  min={1}
+                  min={3}
                   max={100}
                   step={1}
                   value={[managerCount]}
                   onValueChange={([v]) => setManagerCount(v)}
                 />
                 <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>1</span><span>100</span>
+                  <span>3</span><span>100</span>
                 </div>
                 <p className="text-xs text-muted-foreground">
                   Users who log into SAP, Oracle, Xero, or similar only to approve requests.
@@ -108,14 +108,14 @@ export default function ROICalculator() {
                   </span>
                 </div>
                 <Slider
-                  min={10}
+                  min={50}
                   max={1000}
                   step={5}
                   value={[licenseUsdPerUser]}
                   onValueChange={([v]) => setLicenseUsdPerUser(v)}
                 />
                 <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>$10</span><span>$1,000</span>
+                  <span>$50</span><span>$1,000</span>
                 </div>
                 <p className="text-xs text-muted-foreground">
                   Check your SAP, Oracle, Xero, or QuickBooks invoice for the per-seat cost.
@@ -184,19 +184,23 @@ export default function ROICalculator() {
 
                   {/* Net saving */}
                   <div className="border-t border-white/20 pt-6 flex items-start gap-4">
-                    <div className={`rounded-full p-2 shrink-0 ${isPositive ? "bg-green-400/30" : "bg-red-400/30"}`}>
-                      {isPositive ? <TrendingDown className="h-5 w-5" /> : <TrendingUp className="h-5 w-5" />}
+                    <div className="bg-green-400/30 rounded-full p-2 shrink-0">
+                      <TrendingDown className="h-5 w-5" />
                     </div>
                     <div>
                       <p className="text-sm font-medium opacity-80">Net saving per month</p>
-                      <p className={`text-5xl font-extrabold tabular-nums mt-1 ${isPositive ? "" : "opacity-70"}`}>
-                        {isPositive ? "" : "−"}{formatCurrency(Math.abs(netSavingMonthly))}
-                      </p>
-                      <p className="text-sm opacity-80 mt-2">
-                        {isPositive
-                          ? `${formatCurrency(netSavingAnnual)} saved per year`
-                          : "Increase approval volume or reduce ERP seats to see savings"}
-                      </p>
+                      {isPositive ? (
+                        <>
+                          <p className="text-5xl font-extrabold tabular-nums mt-1">
+                            {formatCurrency(netSavingMonthly)}
+                          </p>
+                          <p className="text-sm opacity-80 mt-2">{formatCurrency(netSavingAnnual)} saved per year</p>
+                        </>
+                      ) : (
+                        <p className="text-sm opacity-70 mt-2">
+                          Try increasing your ERP seat count or license cost — your Autopilot subscription will be offset as those numbers grow.
+                        </p>
+                      )}
                     </div>
                   </div>
 
