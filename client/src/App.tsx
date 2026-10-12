@@ -12,8 +12,19 @@ import SaCanegrowersCaseStudy from "@/pages/case-studies/sa-canegrowers";
 import BookDemo from "@/pages/book-demo";
 import Pricing from "@/pages/pricing";
 import ROICalculator from "@/pages/roi-calculator";
+import { lazy, Suspense } from "react";
 
 import ScrollToTop from "@/components/layout/ScrollToTop";
+
+const DemoTest = lazy(() => import("@/pages/demo-test"));
+
+function DemoTestRoute() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <DemoTest />
+    </Suspense>
+  );
+}
 
 function Router() {
   return (
@@ -26,6 +37,7 @@ function Router() {
       <Route path="/case-studies/talksure" component={TalksureCaseStudy} />
       <Route path="/case-studies/sa-canegrowers" component={SaCanegrowersCaseStudy} />
       <Route path="/roi-calculator" component={ROICalculator} />
+      <Route path="/demo-test" component={DemoTestRoute} />
       <Route component={NotFound} />
     </Switch>
   );

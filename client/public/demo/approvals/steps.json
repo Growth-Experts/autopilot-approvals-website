@@ -1,0 +1,336 @@
+[
+ {
+  "id": "7510e82b-5a5a-41fd-8c50-d79bb4dbe584",
+  "type": 3,
+  "title": "Explore a better way to manage approvals",
+  "subtitle": "Bring every approval into one visible, controlled process.",
+  "theme": "light",
+  "variant": "buttons",
+  "textAlign": "left",
+  "showPreviewImage": true,
+  "showLogo": false,
+  "paths": [
+   {
+    "buttonTextColor": "#FFFFFF",
+    "pathType": "step",
+    "id": "f66516ba-7d08-4a63-969a-b6f0f408aca1",
+    "buttonText": "Get Started",
+    "buttonColor": "#2142E7",
+    "targetStepId": null
+   }
+  ]
+ },
+ {
+  "id": "98laBJppbYWQM0XYdWT2-413041_859",
+  "url": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413041_859.png",
+  "size": {
+   "height": 1670,
+   "width": 2628
+  },
+  "type": 1,
+  "originalImageUrl": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413041_859.png",
+  "hotspots": [
+   {
+    "y": 0.5437449511551674,
+    "overlayColor": "rgba(17, 24, 39, 0.25)",
+    "textColor": "#FFFFFF",
+    "defaultOpen": true,
+    "targetId": null,
+    "id": "37487679-ab05-4e8a-bca6-de38b0dbffc2",
+    "width": 40,
+    "shape": "rounded",
+    "label": "Start any approval request from a single interface - with the right business rules applied automatically.",
+    "style": "pulsating",
+    "bgColor": "#2142E7",
+    "borderColor": "#2142E7",
+    "height": 40,
+    "x": 0.4215436954654368
+   }
+  ]
+ },
+ {
+  "id": "98laBJppbYWQM0XYdWT2-413048_281",
+  "url": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413048_281.png",
+  "size": {
+   "width": 2628,
+   "height": 1670
+  },
+  "panAndZoom": {
+   "position": {
+    "top": -0.45254409600247325,
+    "left": -0.2936902161332928
+   },
+   "zoomLevel": 1.6138482023968042,
+   "enabled": true
+  },
+  "type": 1,
+  "originalImageUrl": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413048_281.png",
+  "hotspots": [
+   {
+    "x": 0.49056219418311825,
+    "width": 40,
+    "defaultOpen": true,
+    "textColor": "#FFFFFF",
+    "bgColor": "#2142E7",
+    "targetId": null,
+    "height": 40,
+    "id": "f960338f-3648-49db-96b1-8be5a64a5718",
+    "y": 0.6617982960051387,
+    "label": "Use MS Teams, email, document upload, or manual capture to initiate requests.",
+    "style": "pulsating"
+   }
+  ]
+ },
+ {
+  "id": "98laBJppbYWQM0XYdWT2-413069_406",
+  "url": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413069_406.png",
+  "size": {
+   "width": 2628,
+   "height": 1670
+  },
+  "panAndZoom": {
+   "enabled": true,
+   "zoomLevel": 1.5,
+   "position": {
+    "top": -0.4357142658976763,
+    "left": -0.2636138613861386
+   }
+  },
+  "type": 1,
+  "originalImageUrl": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413069_406.png",
+  "hotspots": [
+   {
+    "height": 40,
+    "targetId": null,
+    "id": "a5c01b57-8b1e-4d32-81e9-ff21ae429305",
+    "bgColor": "#2142E7",
+    "defaultOpen": true,
+    "textColor": "#FFFFFF",
+    "width": 40,
+    "x": 0.681018773410377,
+    "style": "pulsating",
+    "label": "Let AI extract and populate data for you automatically.",
+    "y": 0.7386382285335479
+   }
+  ]
+ },
+ {
+  "id": "cca957b3-8406-4294-94fa-c3881819627d",
+  "url": "https://stream.mux.com/EV00Y8sx4spCDTWnX02bG02Ub5LRQfJHSPZ8okdxatQ00Bc.m3u8?min_resolution=720p",
+  "size": {
+   "width": 2190,
+   "height": 1392
+  },
+  "type": 2,
+  "targetId": null,
+  "streamUrl": "https://stream.mux.com/M2ZbiS01MxmuAUGP8dLK7I01KUtphmWGaqSJN4801Gqtrc.m3u8?min_resolution=720p",
+  "videoThumbnailUrl": "https://image.mux.com/EV00Y8sx4spCDTWnX02bG02Ub5LRQfJHSPZ8okdxatQ00Bc/thumbnail.webp?time=0",
+  "playbackRate": 1,
+  "assetId": "VJTRyWedDsOHzXdy6HHOADoQy3bGDWZqQdlvBWe1Ts00",
+  "startTimeFrac": 0,
+  "endTimeFrac": 1,
+  "duration": 2.312000000034459,
+  "muted": true,
+  "videoProcessing": false,
+  "hotspots": [
+   {
+    "bgColor": "#2142E7",
+    "id": "afd2e8e8-ab0d-4182-86d1-208f35825b22",
+    "height": 40,
+    "targetId": null,
+    "textColor": "#FFFFFF",
+    "defaultOpen": true,
+    "width": 40,
+    "x": 0.7325863294579741,
+    "preferredDirection": "top",
+    "label": "Ensure data accuracy and control by enabling data classification and data cross checks.",
+    "style": "pulsating",
+    "y": 0.7570364837207435
+   }
+  ],
+  "videoPanAndZooms": []
+ },
+ {
+  "id": "98laBJppbYWQM0XYdWT2-413078_593",
+  "url": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413078_593.png",
+  "size": {
+   "width": 2628,
+   "height": 1670
+  },
+  "panAndZoom": {
+   "enabled": false
+  },
+  "type": 1,
+  "originalImageUrl": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413078_593.png",
+  "hotspots": [
+   {
+    "width": 40,
+    "x": 0.7427437613547446,
+    "bgColor": "#2142E7",
+    "height": 40,
+    "targetId": null,
+    "id": "692922a8-6ded-449d-b6c1-194f95292f61",
+    "textColor": "#FFFFFF",
+    "defaultOpen": true,
+    "preferredDirection": "bottom",
+    "label": "Keep source documents with each request, speeding up review and ensuring a complete audit trail.",
+    "style": "pulsating",
+    "y": 0.6463242610697335
+   }
+  ]
+ },
+ {
+  "id": "98laBJppbYWQM0XYdWT2-413181_14",
+  "url": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413181_14.png",
+  "size": {
+   "width": 2628,
+   "height": 1670
+  },
+  "panAndZoom": {
+   "position": {
+    "top": -0.27535757164922503,
+    "left": -0.00010376621073125659
+   },
+   "enabled": true,
+   "zoomLevel": 1.279831045406547
+  },
+  "type": 1,
+  "originalImageUrl": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413181_14.png",
+  "hotspots": [
+   {
+    "defaultOpen": true,
+    "textColor": "#FFFFFF",
+    "bgColor": "#2142E7",
+    "targetId": null,
+    "height": 40,
+    "id": "30fe1c5d-984c-433e-b862-5d759b6daaf7",
+    "x": 0.5339094428413069,
+    "width": 40,
+    "y": 0.7701766093232064,
+    "label": "Automatically determine approval steps and approvers - and have them enforced by the system.",
+    "style": "pulsating",
+    "preferredDirection": "right"
+   }
+  ]
+ },
+ {
+  "id": "362f8857-5576-43dd-bfdc-830e692422f2",
+  "url": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413181_14.png",
+  "size": {
+   "width": 2628,
+   "height": 1670
+  },
+  "panAndZoom": {
+   "zoomLevel": 3.115681233933162,
+   "enabled": true,
+   "position": {
+    "top": -1.046798873984764,
+    "left": -0.699228791773779
+   }
+  },
+  "type": 1,
+  "originalImageUrl": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413181_14.png",
+  "hotspots": [
+   {
+    "y": 0.49420262298239886,
+    "label": "See who needs to act and where each request sits at a glance.",
+    "style": "pulsating",
+    "preferredDirection": "top",
+    "x": 0.3730181774757567,
+    "width": 40,
+    "defaultOpen": true,
+    "textColor": "#FFFFFF",
+    "height": 40,
+    "id": "f5b5ecbe-62ac-4d10-b7be-6bfca170868a",
+    "targetId": null,
+    "bgColor": "#2142E7"
+   }
+  ]
+ },
+ {
+  "id": "ecb77fe1-436a-4e48-844d-87d17f747e2d",
+  "url": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413181_14.png",
+  "size": {
+   "height": 1670,
+   "width": 2628
+  },
+  "panAndZoom": {
+   "zoomLevel": 2.1338028169014085,
+   "enabled": true,
+   "position": {
+    "top": -0.9626203846773297,
+    "left": -1.098591549295775
+   }
+  },
+  "type": 1,
+  "originalImageUrl": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413181_14.png",
+  "hotspots": [
+   {
+    "preferredDirection": "left",
+    "style": "pulsating",
+    "label": "Act on requests instantly -  update, reassign, and keep things moving.",
+    "y": 0.659786998933596,
+    "bgColor": "#2142E7",
+    "id": "8114d168-1ebd-4f4e-95b7-9df30b594d4e",
+    "height": 40,
+    "targetId": null,
+    "textColor": "#FFFFFF",
+    "defaultOpen": true,
+    "width": 40,
+    "x": 0.7944979345518062
+   }
+  ]
+ },
+ {
+  "id": "98laBJppbYWQM0XYdWT2-413206_203",
+  "url": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413206_203.png",
+  "size": {
+   "height": 1670,
+   "width": 2628
+  },
+  "panAndZoom": {
+   "position": {
+    "top": -0.41380134949800335,
+    "left": -0.4761188166954348
+   },
+   "enabled": true,
+   "zoomLevel": 1.6445047489823612
+  },
+  "type": 1,
+  "originalImageUrl": "https://cdn.arcade.software/api-uploads/98laBJppbYWQM0XYdWT2/screenshot-413206_203.png",
+  "hotspots": [
+   {
+    "label": "Once complete, archive the request - including full audit trail and supporting documents - to your document repository.",
+    "style": "pulsating",
+    "y": 0.4434015483041881,
+    "preferredDirection": "right",
+    "x": 0.6228544255148906,
+    "width": 40,
+    "defaultOpen": true,
+    "textColor": "#FFFFFF",
+    "id": "e11b65c8-b101-47ca-b2d7-cbaedee7af62",
+    "height": 40,
+    "targetId": null,
+    "bgColor": "#2142E7"
+   }
+  ]
+ },
+ {
+  "id": "41faf256-39c7-4a0f-babc-b53edc6ebbd9",
+  "type": 3,
+  "title": "Ready to bring visibility and control to your approvals?",
+  "subtitle": "Let us help you bring visibility and control to your approval processes.",
+  "theme": "light",
+  "variant": "buttons",
+  "paths": [
+   {
+    "pathType": "url",
+    "url": "https://autopilotapprovals.com/book-demo",
+    "buttonTextColor": "#FFFFFF",
+    "buttonColor": "#2142E7",
+    "id": "304db6d9-b195-4a9c-93ae-dd9835306ff8",
+    "buttonText": "Book a demo"
+   }
+  ]
+ }
+]

@@ -1,0 +1,8 @@
+/demo-test
+  X-Robots-Tag: noindex, nofollow
+
+/demo-test/
+  X-Robots-Tag: noindex, nofollow
+
+/demo/*
+  X-Robots-Tag: noindex, nofollow
