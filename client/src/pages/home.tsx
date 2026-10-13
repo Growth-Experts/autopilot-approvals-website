@@ -8,6 +8,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 import { Link } from "wouter";
+import { ProductTour } from "@/components/product-tour/ProductTour";
+import {
+  APPROVALS_TOUR_ASPECT_RATIO,
+  approvalsTourSteps,
+} from "@/components/product-tour/approvals-tour";
 
 import MessyInbox from "@/assets/messy-inbox.png";
 
@@ -42,17 +47,11 @@ export default function Home() {
 
           <div className="mt-12 w-full max-w-6xl mx-auto">
             <div className="w-full border border-border bg-white shadow-[0_30px_80px_rgba(11,18,32,0.12)]">
-              <div style={{ position: 'relative', paddingBottom: 'calc(63.5464% + 41px)', height: 0, width: '100%' }}>
-                <iframe
-                  src="https://demo.arcade.software/98laBJppbYWQM0XYdWT2?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
-                  title="Autopilot Approvals Introduction"
-                  frameBorder="0"
-                  loading="lazy"
-                  allowFullScreen
-                  allow="clipboard-write"
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', colorScheme: 'light' }}
-                />
-              </div>
+              <ProductTour
+                steps={approvalsTourSteps}
+                aspectRatio={APPROVALS_TOUR_ASPECT_RATIO}
+                label="Autopilot Approvals Introduction"
+              />
             </div>
           </div>
         </div>
