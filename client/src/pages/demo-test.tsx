@@ -29,8 +29,8 @@ export default function DemoTest() {
               Product tour preview
             </h1>
             <p className="mt-4 text-base md:text-lg text-muted-foreground">
-              Self-hosted replacement for the Arcade embed on the home page. Click the pulsing dot,
-              use Next/Back, or the arrow keys.
+              The self-hosted approvals tour used on the home page. Click the pulsing dot or the
+              caption, use Next/Back, or the arrow keys.
             </p>
           </div>
 
