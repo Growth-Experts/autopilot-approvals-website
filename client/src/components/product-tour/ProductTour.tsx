@@ -9,7 +9,6 @@ import {
   type KeyboardEvent,
   type RefObject,
 } from "react";
-import { MotionConfig, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Pause, Play, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type {
@@ -29,6 +28,7 @@ const FADE_MS = 250;
 const ZOOM_MS = 800;
 const ZOOM_EASE = "cubic-bezier(0.4, 0, 0.2, 1)";
 const MEDIA_READY_TIMEOUT_MS = 8000;
+const FONT_TIMEOUT_MS = 3000;
 
 type LayerState = "active" | "under" | "hidden";
 
@@ -64,7 +64,10 @@ export function ProductTour({
   const rootRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const stage = useElementSize(stageRef);
-  const reduceMotion = useReducedMotion() ?? false;
+  const reduceMotion = usePrefersReducedMotion();
+  const fontsReady = useFontsReady(rootRef);
+  // Holding caption text until the webfont is ready avoids a visible fallback-to-webfont swap.
+  const captionStyle: CSSProperties | undefined = fontsReady ? undefined : { visibility: "hidden" };
   const fadeMs = reduceMotion ? 0 : FADE_MS;
 
   const layers = useMemo(() => buildLayers(steps), [steps]);
@@ -229,120 +232,121 @@ export function ProductTour({
   const sheetText = step.type === "card" ? step.subtitle : step.caption;
 
   return (
-    <MotionConfig reducedMotion="user">
+    <div
+      ref={rootRef}
+      role="region"
+      aria-roledescription="product tour"
+      aria-label={label}
+      tabIndex={0}
+      onKeyDown={onKeyDown}
+      className={cn(
+        "relative w-full bg-white text-[#0B1220] outline-none focus-visible:ring-2 focus-visible:ring-[#2142E7] focus-visible:ring-offset-2",
+        className,
+      )}
+    >
       <div
-        ref={rootRef}
-        role="region"
-        aria-roledescription="product tour"
-        aria-label={label}
-        tabIndex={0}
-        onKeyDown={onKeyDown}
-        className={cn(
-          "relative w-full bg-white text-[#0B1220] outline-none focus-visible:ring-2 focus-visible:ring-[#2142E7] focus-visible:ring-offset-2",
-          className,
-        )}
+        ref={stageRef}
+        className="relative w-full overflow-hidden bg-white select-none"
+        style={{ aspectRatio }}
       >
-        <div
-          ref={stageRef}
-          className="relative w-full overflow-hidden bg-white select-none"
-          style={{ aspectRatio }}
-        >
-          {layers.map((layer) => {
-            const state: LayerState =
-              layer.key === activeKey ? "active" : layer.key === view.under ? "under" : "hidden";
-            // A layer under the fade keeps its last frame; hidden layers pre-position on the step
-            // they're about to show, so activation never jumps.
-            const layerStep =
-              state === "active"
-                ? step
-                : state === "hidden" && pendingStep && layerKey(pendingStep) === layer.key
-                  ? pendingStep
-                  : (lastShown.current.get(layer.key) ?? layer.first);
-            const register = registrar(layer.key);
-            return (
-              <div
-                key={layer.key}
-                ref={wrapperRef(layer.key)}
-                aria-hidden={state !== "active"}
-                inert={state !== "active"}
-                className="absolute inset-0"
-                style={{
-                  zIndex: state === "active" ? 2 : state === "under" ? 1 : 0,
-                  opacity: state === "hidden" ? 0 : 1,
-                  transition: state === "active" && fadeMs ? `opacity ${fadeMs}ms ease-out` : "none",
-                  pointerEvents: state === "active" ? undefined : "none",
-                }}
-              >
-                {layerStep.type === "card" ? (
-                  <CardLayer
-                    step={layerStep}
-                    state={state}
-                    reduceMotion={reduceMotion}
-                    onAdvance={advanceFromStage}
-                    mediaRef={register}
-                  />
-                ) : (
-                  <MediaLayer
-                    step={layerStep}
-                    active={state === "active"}
-                    animateZoom={state === "active" && view.previous === layer.key && !reduceMotion}
-                    eager={layer.first === steps[0] || layer.first === steps[1]}
-                    reduceMotion={reduceMotion}
-                    mediaRef={register}
-                  />
-                )}
-              </div>
-            );
-          })}
-
-          {step.type !== "card" && (
-            <HotspotLayer
-              key={step.id}
-              step={step}
-              stage={stage}
-              reduceMotion={reduceMotion}
-              onActivate={advanceFromStage}
-            />
-          )}
-        </div>
-
-        {sheetText &&
-          (view.shown === total - 1 ? (
-            <div className="md:hidden border-t border-[#0B1220]/10 bg-white px-4 py-3">
-              <p className="text-sm leading-relaxed text-[#0B1220]">{sheetText}</p>
-            </div>
-          ) : (
-            <button
-              type="button"
-              onClick={next}
-              className="group flex w-full cursor-pointer items-center gap-3 border-t border-[#0B1220]/10 bg-white px-4 py-3 text-left transition-colors hover:bg-[#2142E7]/5 active:bg-[#2142E7]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#2142E7] md:hidden"
+        {layers.map((layer) => {
+          const state: LayerState =
+            layer.key === activeKey ? "active" : layer.key === view.under ? "under" : "hidden";
+          // A layer under the fade keeps its last frame; hidden layers pre-position on the step
+          // they're about to show, so activation never jumps.
+          const layerStep =
+            state === "active"
+              ? step
+              : state === "hidden" && pendingStep && layerKey(pendingStep) === layer.key
+                ? pendingStep
+                : (lastShown.current.get(layer.key) ?? layer.first);
+          const register = registrar(layer.key);
+          return (
+            <div
+              key={layer.key}
+              ref={wrapperRef(layer.key)}
+              aria-hidden={state !== "active"}
+              inert={state !== "active"}
+              className="absolute inset-0"
+              style={{
+                zIndex: state === "active" ? 2 : state === "under" ? 1 : 0,
+                opacity: state === "hidden" ? 0 : 1,
+                transition: state === "active" && fadeMs ? `opacity ${fadeMs}ms ease-out` : "none",
+                pointerEvents: state === "active" ? undefined : "none",
+              }}
             >
-              <span className="flex-1 text-sm leading-relaxed text-[#0B1220]">
-                {sheetText}
-                <span className="sr-only"> Next step</span>
-              </span>
-              <ArrowRight
-                className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none"
-                style={{ color: BRAND }}
-                aria-hidden="true"
-              />
-            </button>
-          ))}
+              {layerStep.type === "card" ? (
+                <CardLayer
+                  step={layerStep}
+                  state={state}
+                  reduceMotion={reduceMotion}
+                  onAdvance={advanceFromStage}
+                  mediaRef={register}
+                />
+              ) : (
+                <MediaLayer
+                  step={layerStep}
+                  active={state === "active"}
+                  animateZoom={state === "active" && view.previous === layer.key && !reduceMotion}
+                  eager={layer.first === steps[0] || layer.first === steps[1]}
+                  reduceMotion={reduceMotion}
+                  mediaRef={register}
+                />
+              )}
+            </div>
+          );
+        })}
 
-        <ControlBar
-          index={index}
-          total={total}
-          isFirst={isFirst}
-          isLast={isLast}
-          onBack={back}
-          onNext={isLast ? () => goTo(0) : next}
-        />
-
-        <p className="sr-only" aria-live="polite" aria-atomic="true">
-          {`Step ${view.shown + 1} of ${total}. ${step.type === "card" ? step.title : step.caption}`}
-        </p>
+        {step.type !== "card" && (
+          <HotspotLayer
+            key={step.id}
+            step={step}
+            stage={stage}
+            reduceMotion={reduceMotion}
+            fontsReady={fontsReady}
+            onActivate={advanceFromStage}
+          />
+        )}
       </div>
-    </MotionConfig>
+
+      {sheetText &&
+        (view.shown === total - 1 ? (
+          <div className="md:hidden border-t border-[#0B1220]/10 bg-white px-4 py-3">
+            <p className="text-sm leading-relaxed text-[#0B1220]" style={captionStyle}>
+              {sheetText}
+            </p>
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={next}
+            className="group flex w-full cursor-pointer items-center gap-3 border-t border-[#0B1220]/10 bg-white px-4 py-3 text-left transition-colors hover:bg-[#2142E7]/5 active:bg-[#2142E7]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#2142E7] md:hidden"
+          >
+            <span className="flex-1 text-sm leading-relaxed text-[#0B1220]" style={captionStyle}>
+              {sheetText}
+              <span className="sr-only"> Next step</span>
+            </span>
+            <ArrowRight
+              className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none"
+              style={{ color: BRAND }}
+              aria-hidden="true"
+            />
+          </button>
+        ))}
+
+      <ControlBar
+        index={index}
+        total={total}
+        isFirst={isFirst}
+        isLast={isLast}
+        onBack={back}
+        onNext={isLast ? () => goTo(0) : next}
+      />
+
+      <p className="sr-only" aria-live="polite" aria-atomic="true">
+        {`Step ${view.shown + 1} of ${total}. ${step.type === "card" ? step.title : step.caption}`}
+      </p>
+    </div>
   );
 }
 
@@ -567,23 +571,45 @@ function HotspotLayer({
   step,
   stage,
   reduceMotion,
+  fontsReady,
   onActivate,
 }: {
   step: TourMediaStep;
   stage: Size;
   reduceMotion: boolean;
+  fontsReady: boolean;
   onActivate: () => void;
 }) {
   const { x, y } = displayedHotspot(step);
   // Let the zoom settle before the hotspot appears at its final position.
-  const delay = reduceMotion ? 0 : step.type === "image" && step.zoom ? 0.65 : 0.25;
+  const delay = step.type === "image" && step.zoom ? 650 : 250;
+  const layerRef = useRef<HTMLDivElement>(null);
+
+  // The fade is held by `fill: "forwards"` and never handed back to inline styles: swapping a
+  // finished animation for a style one frame later is what made the bubble blink. `will-change`
+  // keeps the layer composited after the fade so the text isn't re-rasterised when it ends.
+  // Waiting for fonts keeps a late webfont swap from resizing the bubble once it's visible.
+  useLayoutEffect(() => {
+    const el = layerRef.current;
+    if (!el || !fontsReady) return;
+    if (reduceMotion || typeof el.animate !== "function") {
+      el.style.opacity = "1";
+      return;
+    }
+    const fade = el.animate([{ opacity: 0 }, { opacity: 1 }], {
+      duration: 300,
+      delay,
+      easing: "ease-out",
+      fill: "forwards",
+    });
+    return () => fade.cancel();
+  }, [delay, reduceMotion, fontsReady]);
 
   return (
-    <motion.div
+    <div
+      ref={layerRef}
       className="pointer-events-none absolute inset-0 z-10"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3, delay }}
+      style={{ opacity: 0, willChange: "opacity" }}
     >
       <button
         type="button"
@@ -618,7 +644,7 @@ function HotspotLayer({
           onActivate={onActivate}
         />
       )}
-    </motion.div>
+    </div>
   );
 }
 
@@ -740,6 +766,49 @@ function ControlBar({
 interface Size {
   width: number;
   height: number;
+}
+
+/** True once the element's own font family is loaded (or after a timeout), checked before first paint. */
+function useFontsReady(ref: RefObject<HTMLElement | null>) {
+  const [ready, setReady] = useState(false);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el || !document.fonts) {
+      setReady(true);
+      return;
+    }
+    const family = getComputedStyle(el).fontFamily;
+    const specs = [`400 14px ${family}`, `500 14px ${family}`];
+    if (specs.every((spec) => document.fonts.check(spec))) {
+      setReady(true);
+      return;
+    }
+    let cancelled = false;
+    const done = () => {
+      if (!cancelled) setReady(true);
+    };
+    const timer = setTimeout(done, FONT_TIMEOUT_MS);
+    void Promise.all(specs.map((spec) => document.fonts.load(spec))).then(done, done);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [ref]);
+  return ready;
+}
+
+function usePrefersReducedMotion() {
+  const [reduce, setReduce] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const onChange = () => setReduce(query.matches);
+    onChange();
+    query.addEventListener("change", onChange);
+    return () => query.removeEventListener("change", onChange);
+  }, []);
+  return reduce;
 }
 
 function useElementSize(ref: RefObject<HTMLElement | null>): Size {
