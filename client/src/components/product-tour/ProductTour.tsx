@@ -154,11 +154,28 @@ export function ProductTour({
           )}
         </div>
 
-        {sheetText && (
-          <div className="md:hidden border-t border-[#0B1220]/10 bg-white px-4 py-3">
-            <p className="text-sm leading-relaxed text-[#0B1220]">{sheetText}</p>
-          </div>
-        )}
+        {sheetText &&
+          (isLast ? (
+            <div className="md:hidden border-t border-[#0B1220]/10 bg-white px-4 py-3">
+              <p className="text-sm leading-relaxed text-[#0B1220]">{sheetText}</p>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={next}
+              className="group flex w-full cursor-pointer items-center gap-3 border-t border-[#0B1220]/10 bg-white px-4 py-3 text-left transition-colors hover:bg-[#2142E7]/5 active:bg-[#2142E7]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#2142E7] md:hidden"
+            >
+              <span className="flex-1 text-sm leading-relaxed text-[#0B1220]">
+                {sheetText}
+                <span className="sr-only"> Next step</span>
+              </span>
+              <ArrowRight
+                className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none"
+                style={{ color: BRAND }}
+                aria-hidden="true"
+              />
+            </button>
+          ))}
 
         <ControlBar
           index={index}
@@ -408,6 +425,7 @@ function HotspotLayer({
           anchor={{ x: x * stage.width, y: y * stage.height }}
           stage={stage}
           preferred={step.hotspot.placement}
+          onActivate={onActivate}
         />
       )}
     </motion.div>
@@ -419,34 +437,42 @@ function Tooltip({
   anchor,
   stage,
   preferred,
+  onActivate,
 }: {
   caption: string;
   anchor: { x: number; y: number };
   stage: Size;
   preferred?: TooltipPlacement;
+  onActivate: () => void;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLButtonElement>(null);
   const size = useElementSize(ref);
   const layout = layoutTooltip(anchor, size, stage, preferred);
 
   return (
-    <div
+    <button
       ref={ref}
-      aria-hidden="true"
-      className="absolute hidden w-max max-w-[min(20rem,42%)] rounded-[6px] px-4 py-3 text-sm font-medium leading-snug text-white shadow-[0_12px_32px_rgba(11,18,32,0.3)] md:block"
+      type="button"
+      onClick={onActivate}
+      className="group pointer-events-auto absolute hidden w-max max-w-[min(20rem,42%)] cursor-pointer rounded-[6px] bg-[#2142E7] px-4 py-3 text-left text-sm font-medium leading-snug text-white shadow-[0_12px_32px_rgba(11,18,32,0.3)] transition-colors hover:bg-[#1a35c2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2142E7] motion-reduce:transition-none md:block"
       style={{
-        backgroundColor: BRAND,
         left: layout.left,
         top: layout.top,
         visibility: size.width ? "visible" : "hidden",
       }}
     >
       {caption}
-      <span
-        className="absolute h-3 w-3 rotate-45"
-        style={{ backgroundColor: BRAND, ...layout.arrow }}
+      <span className="sr-only"> Next step</span>
+      <ArrowRight
+        className="ml-1.5 inline-block h-3.5 w-3.5 -translate-y-px align-middle opacity-80 transition-transform group-hover:translate-x-0.5 group-hover:opacity-100 motion-reduce:transition-none"
+        aria-hidden="true"
       />
-    </div>
+      <span
+        aria-hidden="true"
+        className="absolute h-3 w-3 rotate-45 bg-[#2142E7] transition-colors group-hover:bg-[#1a35c2] motion-reduce:transition-none"
+        style={layout.arrow}
+      />
+    </button>
   );
 }
 
