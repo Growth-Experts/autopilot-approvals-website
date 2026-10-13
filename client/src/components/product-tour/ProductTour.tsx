@@ -2,13 +2,14 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
   type CSSProperties,
   type KeyboardEvent,
   type RefObject,
 } from "react";
-import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "framer-motion";
+import { MotionConfig, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Pause, Play, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type {
@@ -24,7 +25,21 @@ export type { TourStep } from "./types";
 const BRAND = "#2142E7";
 const TOOLTIP_GAP = 22;
 const EDGE_MARGIN = 8;
-const ZOOM_EASE = [0.4, 0, 0.2, 1] as const;
+const FADE_MS = 250;
+const ZOOM_MS = 800;
+const ZOOM_EASE = "cubic-bezier(0.4, 0, 0.2, 1)";
+const MEDIA_READY_TIMEOUT_MS = 8000;
+
+type LayerState = "active" | "under" | "hidden";
+
+interface StageView {
+  /** Step currently painted on the stage; lags `index` until its media has decoded. */
+  shown: number;
+  /** Layer kept fully opaque beneath the incoming one while it fades in. */
+  under: string | null;
+  /** Layer that was active before `shown`, used to decide whether to animate the zoom. */
+  previous: string | null;
+}
 
 export interface ProductTourProps {
   steps: TourStep[];
@@ -50,8 +65,129 @@ export function ProductTour({
   const stageRef = useRef<HTMLDivElement>(null);
   const stage = useElementSize(stageRef);
   const reduceMotion = useReducedMotion() ?? false;
+  const fadeMs = reduceMotion ? 0 : FADE_MS;
 
-  const step = steps[index];
+  const layers = useMemo(() => buildLayers(steps), [steps]);
+  const media = useRef(new Map<string, HTMLImageElement | HTMLVideoElement>());
+  const [view, setView] = useState<StageView>(() => ({
+    shown: clampIndex(initialStep, steps.length),
+    under: null,
+    previous: null,
+  }));
+
+  const registrars = useRef(new Map<string, MediaRef>());
+  const registrar = (key: string) => {
+    let register = registrars.current.get(key);
+    if (!register) {
+      register = (el) => {
+        if (el) media.current.set(key, el);
+        else media.current.delete(key);
+      };
+      registrars.current.set(key, register);
+    }
+    return register;
+  };
+
+  const wrappers = useRef(new Map<string, HTMLDivElement>());
+  const wrapperRefs = useRef(new Map<string, (el: HTMLDivElement | null) => void>());
+  const wrapperRef = (key: string) => {
+    let setRef = wrapperRefs.current.get(key);
+    if (!setRef) {
+      setRef = (el) => {
+        if (el) wrappers.current.set(key, el);
+        else wrappers.current.delete(key);
+      };
+      wrapperRefs.current.set(key, setRef);
+    }
+    return setRef;
+  };
+
+  const mediaReady = useCallback((key: string) => {
+    const el = media.current.get(key);
+    if (!el) return Promise.resolve();
+    const ready =
+      el instanceof HTMLImageElement
+        ? el.decode().catch(() => undefined)
+        : el.readyState >= 2
+          ? Promise.resolve()
+          : new Promise<void>((resolve) => {
+              el.addEventListener("loadeddata", () => resolve(), { once: true });
+              el.addEventListener("error", () => resolve(), { once: true });
+            });
+    return Promise.race([
+      ready,
+      new Promise<void>((resolve) => setTimeout(resolve, MEDIA_READY_TIMEOUT_MS)),
+    ]);
+  }, []);
+
+  // A swap never interrupts a fade in progress, so each fade starts from a fully opaque frame.
+  const opaque = useCallback((key: string) => {
+    const deadline = performance.now() + FADE_MS + 1000;
+    return new Promise<void>((resolve) => {
+      const check = () => {
+        const el = wrappers.current.get(key);
+        if (!el || Number(getComputedStyle(el).opacity) >= 0.999 || performance.now() > deadline) {
+          resolve();
+        } else {
+          requestAnimationFrame(check);
+        }
+      };
+      check();
+    });
+  }, []);
+
+  useEffect(() => {
+    const from = steps[view.shown];
+    const to = steps[index];
+    if (!from || !to || index === view.shown) return;
+    const fromKey = layerKey(from);
+    const toKey = layerKey(to);
+    let cancelled = false;
+    const show = () => {
+      if (cancelled) return;
+      setView((v) => ({
+        shown: index,
+        under: fromKey === toKey ? v.under : fromKey,
+        previous: fromKey,
+      }));
+    };
+    if (fromKey === toKey) {
+      show();
+    } else {
+      void mediaReady(toKey)
+        .then(() => opaque(fromKey))
+        .then(show);
+    }
+    return () => {
+      cancelled = true;
+    };
+  }, [index, view.shown, steps, mediaReady, opaque]);
+
+  useEffect(() => {
+    const top = steps[view.shown];
+    if (!view.under || !top) return;
+    let cancelled = false;
+    void opaque(layerKey(top)).then(() => {
+      if (!cancelled) setView((v) => ({ ...v, under: null }));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [view.under, view.shown, steps, opaque]);
+
+  useEffect(() => {
+    for (const neighbour of [steps[view.shown + 1], steps[view.shown + 2], steps[view.shown - 1]]) {
+      if (neighbour) void mediaReady(layerKey(neighbour));
+    }
+  }, [view.shown, steps, mediaReady]);
+
+  const step = steps[view.shown];
+  const activeKey = step ? layerKey(step) : null;
+  const lastShown = useRef(new Map<string, TourStep>());
+  useEffect(() => {
+    if (step && activeKey) lastShown.current.set(activeKey, step);
+  }, [step, activeKey]);
+  const pendingStep = steps[index];
   const total = steps.length;
   const isFirst = index === 0;
   const isLast = index === total - 1;
@@ -72,13 +208,6 @@ export function ProductTour({
     rootRef.current?.focus({ preventScroll: true });
     next();
   }, [next]);
-
-  useEffect(() => {
-    for (const neighbour of [steps[index + 1], steps[index - 1]]) {
-      const src = neighbour && previewSource(neighbour);
-      if (src) new Image().src = src;
-    }
-  }, [index, steps]);
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.altKey || event.ctrlKey || event.metaKey) return;
@@ -118,22 +247,53 @@ export function ProductTour({
           className="relative w-full overflow-hidden bg-white select-none"
           style={{ aspectRatio }}
         >
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={layerKey(step)}
-              className="absolute inset-0"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.35 }}
-            >
-              {step.type === "card" ? (
-                <CardLayer step={step} onAdvance={advanceFromStage} />
-              ) : (
-                <MediaLayer step={step} reduceMotion={reduceMotion} />
-              )}
-            </motion.div>
-          </AnimatePresence>
+          {layers.map((layer) => {
+            const state: LayerState =
+              layer.key === activeKey ? "active" : layer.key === view.under ? "under" : "hidden";
+            // A layer under the fade keeps its last frame; hidden layers pre-position on the step
+            // they're about to show, so activation never jumps.
+            const layerStep =
+              state === "active"
+                ? step
+                : state === "hidden" && pendingStep && layerKey(pendingStep) === layer.key
+                  ? pendingStep
+                  : (lastShown.current.get(layer.key) ?? layer.first);
+            const register = registrar(layer.key);
+            return (
+              <div
+                key={layer.key}
+                ref={wrapperRef(layer.key)}
+                aria-hidden={state !== "active"}
+                inert={state !== "active"}
+                className="absolute inset-0"
+                style={{
+                  zIndex: state === "active" ? 2 : state === "under" ? 1 : 0,
+                  opacity: state === "hidden" ? 0 : 1,
+                  transition: state === "active" && fadeMs ? `opacity ${fadeMs}ms ease-out` : "none",
+                  pointerEvents: state === "active" ? undefined : "none",
+                }}
+              >
+                {layerStep.type === "card" ? (
+                  <CardLayer
+                    step={layerStep}
+                    state={state}
+                    reduceMotion={reduceMotion}
+                    onAdvance={advanceFromStage}
+                    mediaRef={register}
+                  />
+                ) : (
+                  <MediaLayer
+                    step={layerStep}
+                    active={state === "active"}
+                    animateZoom={state === "active" && view.previous === layer.key && !reduceMotion}
+                    eager={layer.first === steps[0] || layer.first === steps[1]}
+                    reduceMotion={reduceMotion}
+                    mediaRef={register}
+                  />
+                )}
+              </div>
+            );
+          })}
 
           {step.type !== "card" && (
             <HotspotLayer
@@ -147,7 +307,7 @@ export function ProductTour({
         </div>
 
         {sheetText &&
-          (isLast ? (
+          (view.shown === total - 1 ? (
             <div className="md:hidden border-t border-[#0B1220]/10 bg-white px-4 py-3">
               <p className="text-sm leading-relaxed text-[#0B1220]">{sheetText}</p>
             </div>
@@ -179,20 +339,29 @@ export function ProductTour({
         />
 
         <p className="sr-only" aria-live="polite" aria-atomic="true">
-          {`Step ${index + 1} of ${total}. ${step.type === "card" ? step.title : step.caption}`}
+          {`Step ${view.shown + 1} of ${total}. ${step.type === "card" ? step.title : step.caption}`}
         </p>
       </div>
     </MotionConfig>
   );
 }
 
+type MediaRef = (el: HTMLImageElement | HTMLVideoElement | null) => void;
+
 function CardLayer({
   step,
+  state,
+  reduceMotion,
   onAdvance,
+  mediaRef,
 }: {
   step: TourCardStep;
+  state: LayerState;
+  reduceMotion: boolean;
   onAdvance: () => void;
+  mediaRef: MediaRef;
 }) {
+  const showContent = state !== "hidden" || reduceMotion;
   const { action } = step;
   const buttonClass =
     "inline-flex items-center gap-2 rounded-[6px] px-4 py-2 text-xs font-bold text-white shadow-lg transition-colors sm:px-6 sm:py-3 sm:text-sm md:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]";
@@ -201,19 +370,26 @@ function CardLayer({
     <div className="absolute inset-0">
       {step.backgroundImage && (
         <img
+          ref={mediaRef}
           src={step.backgroundImage}
           alt=""
           aria-hidden="true"
           draggable={false}
+          decoding="async"
           className="absolute inset-0 h-full w-full scale-110 object-cover blur-[6px]"
         />
       )}
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(11,18,32,0.95)_0%,rgba(11,18,32,0.84)_55%,rgba(33,66,231,0.7)_100%)]" />
-      <motion.div
+      <div
         className="relative flex h-full max-w-3xl flex-col justify-center gap-3 px-[7%] sm:gap-5"
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, delay: 0.1 }}
+        style={{
+          opacity: showContent ? 1 : 0,
+          transform: showContent ? "none" : "translateY(12px)",
+          transition:
+            state === "active" && !reduceMotion
+              ? "opacity 450ms ease-out 100ms, transform 450ms ease-out 100ms"
+              : "none",
+        }}
       >
         <h2 className="text-lg font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-5xl">
           {step.title}
@@ -245,42 +421,80 @@ function CardLayer({
             </button>
           )}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
 
-function MediaLayer({ step, reduceMotion }: { step: TourMediaStep; reduceMotion: boolean }) {
+function MediaLayer({
+  step,
+  active,
+  animateZoom,
+  eager,
+  reduceMotion,
+  mediaRef,
+}: {
+  step: TourMediaStep;
+  active: boolean;
+  animateZoom: boolean;
+  eager: boolean;
+  reduceMotion: boolean;
+  mediaRef: MediaRef;
+}) {
   const zoom = step.type === "image" ? step.zoom : undefined;
-  const target = zoom
-    ? { x: `${zoom.left * 100}%`, y: `${zoom.top * 100}%`, scale: zoom.level }
-    : { x: "0%", y: "0%", scale: 1 };
 
   return (
-    <motion.div
+    <div
       className="absolute inset-0"
-      style={{ originX: 0, originY: 0 }}
-      initial={{ x: "0%", y: "0%", scale: 1 }}
-      animate={target}
-      transition={{ duration: 0.8, ease: ZOOM_EASE }}
+      style={{
+        transformOrigin: "0 0",
+        transform: zoom
+          ? `translate(${zoom.left * 100}%, ${zoom.top * 100}%) scale(${zoom.level})`
+          : "none",
+        transition: animateZoom ? `transform ${ZOOM_MS}ms ${ZOOM_EASE}` : "none",
+      }}
     >
       {step.type === "image" ? (
         <img
+          ref={mediaRef}
           src={step.image}
           alt={step.alt}
           draggable={false}
+          decoding="async"
+          fetchPriority={eager ? "high" : "low"}
           className="h-full w-full object-cover"
         />
       ) : (
-        <TourVideo step={step} reduceMotion={reduceMotion} />
+        <TourVideo step={step} active={active} reduceMotion={reduceMotion} mediaRef={mediaRef} />
       )}
-    </motion.div>
+    </div>
   );
 }
 
-function TourVideo({ step, reduceMotion }: { step: TourVideoStep; reduceMotion: boolean }) {
+function TourVideo({
+  step,
+  active,
+  reduceMotion,
+  mediaRef,
+}: {
+  step: TourVideoStep;
+  active: boolean;
+  reduceMotion: boolean;
+  mediaRef: MediaRef;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(!reduceMotion);
+  const setRefs = useCallback(
+    (el: HTMLVideoElement | null) => {
+      ref.current = el;
+      mediaRef(el);
+    },
+    [mediaRef],
+  );
+
+  useEffect(() => {
+    if (active) setPlaying(!reduceMotion);
+  }, [active, reduceMotion]);
 
   useEffect(() => {
     const video = ref.current;
@@ -313,17 +527,17 @@ function TourVideo({ step, reduceMotion }: { step: TourVideoStep; reduceMotion: 
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
-    if (playing) {
+    if (playing && active) {
       video.play().catch(() => setPlaying(false));
     } else {
       video.pause();
     }
-  }, [playing]);
+  }, [playing, active]);
 
   return (
     <>
       <video
-        ref={ref}
+        ref={setRefs}
         src={step.video}
         poster={step.poster}
         muted
@@ -558,9 +772,14 @@ function layerKey(step: TourStep) {
   return step.type === "image" ? `image:${step.image}` : `video:${step.id}`;
 }
 
-function previewSource(step: TourStep) {
-  if (step.type === "card") return step.backgroundImage;
-  return step.type === "image" ? step.image : step.poster;
+/** One persistent stage layer per distinct image, video or card, in first-appearance order. */
+function buildLayers(steps: TourStep[]) {
+  const layers = new Map<string, { key: string; first: TourStep }>();
+  for (const step of steps) {
+    const key = layerKey(step);
+    if (!layers.has(key)) layers.set(key, { key, first: step });
+  }
+  return Array.from(layers.values());
 }
 
 /** Hotspot position within the frame once the step's zoom is applied. */
