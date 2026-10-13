@@ -128,15 +128,7 @@ export function ProductTour({
               transition={{ duration: 0.35 }}
             >
               {step.type === "card" ? (
-                <CardLayer
-                  step={step}
-                  isLast={isLast}
-                  onAdvance={advanceFromStage}
-                  onRestart={() => {
-                    rootRef.current?.focus({ preventScroll: true });
-                    goTo(0);
-                  }}
-                />
+                <CardLayer step={step} onAdvance={advanceFromStage} />
               ) : (
                 <MediaLayer step={step} reduceMotion={reduceMotion} />
               )}
@@ -196,14 +188,10 @@ export function ProductTour({
 
 function CardLayer({
   step,
-  isLast,
   onAdvance,
-  onRestart,
 }: {
   step: TourCardStep;
-  isLast: boolean;
   onAdvance: () => void;
-  onRestart: () => void;
 }) {
   const { action } = step;
   const buttonClass =
@@ -245,7 +233,6 @@ function CardLayer({
               style={{ backgroundColor: BRAND }}
             >
               {action.label}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
           ) : (
             <button
@@ -255,17 +242,6 @@ function CardLayer({
               style={{ backgroundColor: BRAND }}
             >
               {action.label}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </button>
-          )}
-          {isLast && (
-            <button
-              type="button"
-              onClick={onRestart}
-              className="inline-flex items-center gap-2 rounded-[6px] border border-white/40 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/10 sm:px-6 sm:py-3 sm:text-sm md:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <RotateCcw className="h-4 w-4" aria-hidden="true" />
-              Restart tour
             </button>
           )}
         </div>
