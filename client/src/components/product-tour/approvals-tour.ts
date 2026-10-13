@@ -86,7 +86,8 @@ export const approvalsTourSteps: TourStep[] = [
     type: "image",
     image: `${BASE}/screenshot-413181_14.webp`,
     alt: "Close-up of the actions available on a request",
-    caption: "Act on requests instantly - update, reassign, and keep things moving.",
+    // Double space is verbatim from the Arcade label.
+    caption: "Act on requests instantly -  update, reassign, and keep things moving.",
     hotspot: { x: 0.7945, y: 0.6598, placement: "left" },
     zoom: { level: 2.1338, left: -1.0986, top: -0.9626 },
   },
