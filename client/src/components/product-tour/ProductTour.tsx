@@ -580,7 +580,7 @@ function HotspotLayer({
 
   return (
     <motion.div
-      className="pointer-events-none absolute inset-0"
+      className="pointer-events-none absolute inset-0 z-10"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3, delay }}
